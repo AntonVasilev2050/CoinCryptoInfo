@@ -1,0 +1,2 @@
+rootProject.name = "CoinCryptoInfo"
+include ':app'
