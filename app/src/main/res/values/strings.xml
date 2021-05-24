@@ -9,4 +9,6 @@
     <string name="settings">Настройки</string>
     <string name="favorite">Избранное</string>
     <string name="main">Главная</string>
+    <string name="coin_icon">Иконка монеты</string>
+    <string name="mark_as_favorite">Отметить избранной</string>
 </resources>

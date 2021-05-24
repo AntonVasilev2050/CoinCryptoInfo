@@ -11,9 +11,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.avvsoft2050.coincryptoinfo.databinding.FragmentMainBinding
 
-class MainFragment : Fragment() {
+class CoinsMarketsFragment : Fragment() {
 
-    private lateinit var mainViewModel: MainViewModel
+    private lateinit var coinsMarketsViewModel: CoinsMarketsViewModel
     private var _binding: FragmentMainBinding? = null
 
     // This property is only valid between onCreateView and
@@ -25,23 +25,23 @@ class MainFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        mainViewModel =
-            ViewModelProvider(this).get(MainViewModel::class.java)
+        coinsMarketsViewModel =
+            ViewModelProvider(this).get(CoinsMarketsViewModel::class.java)
 //        mainViewModel.loadData()
 //        mainViewModel.coinsMarketsList.observe(viewLifecycleOwner, Observer {
 //            Log.d("TEST_OF_LOADING_DATA", "Success in fragment: $it")
 //        })
-        mainViewModel.getCoinInfo("btc").observe(viewLifecycleOwner, Observer {
+        coinsMarketsViewModel.getCoinInfo("btc").observe(viewLifecycleOwner, Observer {
             Log.d("TEST_OF_LOADING_DATA", "Success in fragment: $it")
         })
 
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        mainViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+//        val textView: TextView = binding.textHome
+//        coinsMarketsViewModel.text.observe(viewLifecycleOwner, Observer {
+//            textView.text = it
+//        })
         return root
     }
 

@@ -15,7 +15,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.delay
 import java.util.concurrent.TimeUnit
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
+class CoinsMarketsViewModel(application: Application) : AndroidViewModel(application) {
 
     private val db = AppDatabase.getInstance(application)
     private val compositeDisposable = CompositeDisposable()
