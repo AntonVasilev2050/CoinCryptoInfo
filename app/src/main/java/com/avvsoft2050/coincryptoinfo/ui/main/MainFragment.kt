@@ -1,6 +1,7 @@
 package com.avvsoft2050.coincryptoinfo.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,9 +24,16 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         mainViewModel =
             ViewModelProvider(this).get(MainViewModel::class.java)
+//        mainViewModel.loadData()
+//        mainViewModel.coinsMarketsList.observe(viewLifecycleOwner, Observer {
+//            Log.d("TEST_OF_LOADING_DATA", "Success in fragment: $it")
+//        })
+        mainViewModel.getCoinInfo("btc").observe(viewLifecycleOwner, Observer {
+            Log.d("TEST_OF_LOADING_DATA", "Success in fragment: $it")
+        })
 
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val root: View = binding.root

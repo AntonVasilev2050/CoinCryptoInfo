@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val compositeDisposable = CompositeDisposable()
-    private lateinit var viewModel: CoinViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +37,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        viewModel = ViewModelProvider(this).get(CoinViewModel::class.java)
-        viewModel.loadData()
-        viewModel.coinsMarketsList.observe(this, Observer {
-            Log.d("TEST_OF_LOADING_DATA", "Success in activity: $it")
-        })
+
     }
 
 }
