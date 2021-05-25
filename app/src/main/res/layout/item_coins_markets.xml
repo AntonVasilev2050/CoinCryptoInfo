@@ -112,7 +112,7 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvFirstCurrentPrice"
-            tools:text="1ч" />
+            tools:text="% 1ч" />
 
         <TextView
             android:id="@+id/tvDayLabel"
@@ -122,7 +122,7 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvHourLabel"
-            tools:text="1д" />
+            tools:text="% 1д" />
 
         <TextView
             android:id="@+id/tv7DaysLabel"
@@ -132,34 +132,31 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDayLabel"
-            tools:text="7д" />
+            tools:text="% 7д" />
 
         <TextView
             android:id="@+id/tvHour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toStartOf="@+id/tvHourLabel"
             app:layout_constraintTop_toTopOf="@+id/tvHourLabel"
-            tools:text="-0.03%" />
+            tools:text="-0.03" />
 
         <TextView
             android:id="@+id/tvDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toStartOf="@+id/tvDayLabel"
             app:layout_constraintTop_toTopOf="@+id/tvDayLabel"
-            tools:text="+10.91%" />
+            tools:text="+10.91" />
 
         <TextView
             android:id="@+id/tv7Days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toStartOf="@+id/tv7DaysLabel"
             app:layout_constraintTop_toTopOf="@+id/tv7DaysLabel"
-            tools:text="+28.34%" />
+            tools:text="+28.34" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

@@ -19,6 +19,8 @@ class CoinsMarketsViewModel(application: Application) : AndroidViewModel(applica
 
     private val db = AppDatabase.getInstance(application)
     private val compositeDisposable = CompositeDisposable()
+    private val firstCurrency = "usd"
+    private val secondCurrency = "rub"
 
     val coinsMarketsList = db.coinsMarketsDao().getCoinsMarketsList()
 
@@ -31,7 +33,7 @@ class CoinsMarketsViewModel(application: Application) : AndroidViewModel(applica
     }
 
     private fun loadData(){
-        val disposable = ApiFactory.apiService.getCoinsMarkets()
+        val disposable = ApiFactory.apiService.getCoinsMarkets(vsCurrency = firstCurrency)
             .delaySubscription(10, TimeUnit.SECONDS)
             .repeat()
             .retry()
