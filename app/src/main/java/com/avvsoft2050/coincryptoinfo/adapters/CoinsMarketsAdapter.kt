@@ -31,8 +31,8 @@ class CoinsMarketsAdapter: RecyclerView.Adapter<CoinsMarketsAdapter.CoinsMarkets
         holder.tvName.text = coin.name
         holder.tvFirstCurrencyLabel1.text = "$"
         holder.tvFirstCurrentPrice.text = coin.currentPrice.toString()
-        holder.tvSecondCurrencyLabel2.text = "P"
-//        holder.tvSecondCurrentPrice.text = " "
+        holder.tvLastUpdatedLabel.text = "Обновлено в:"
+        holder.tvLastUpdated.text = coin.lastUpdated?.dropLast(5)
         val changeHour = coin.priceChangePercentage1hInCurrency?.let { (it * 100).roundToInt() / 100.0 }
         holder.tvHour.text = changeHour.toString()
         holder.tvHourLabel.text = "% 1ч"
@@ -55,8 +55,8 @@ class CoinsMarketsAdapter: RecyclerView.Adapter<CoinsMarketsAdapter.CoinsMarkets
         val tvName = itemView.tvName
         val tvFirstCurrencyLabel1 = itemView.tvFirstCurrencyLabel1
         val tvFirstCurrentPrice = itemView.tvFirstCurrentPrice
-        val tvSecondCurrencyLabel2 = itemView.tvLastUpdatedLabel
-        val tvSecondCurrentPrice = itemView.tvLastUpdated
+        val tvLastUpdatedLabel = itemView.tvLastUpdatedLabel
+        val tvLastUpdated = itemView.tvLastUpdated
         val tvHour = itemView.tvHour
         val tvHourLabel = itemView.tvHourLabel
         val tvDay = itemView.tvDay
