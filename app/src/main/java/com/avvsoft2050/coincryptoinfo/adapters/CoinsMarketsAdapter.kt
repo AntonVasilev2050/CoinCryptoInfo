@@ -3,6 +3,8 @@ package com.avvsoft2050.coincryptoinfo.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.avvsoft2050.coincryptoinfo.R
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
@@ -18,6 +20,8 @@ class CoinsMarketsAdapter(private val context: CoinsMarketsFragment): RecyclerVi
         field = value
         notifyDataSetChanged()
     }
+
+    var onCoinClickListener:OnCoinClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinsMarketsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_coins_markets, parent, false)
@@ -44,15 +48,18 @@ class CoinsMarketsAdapter(private val context: CoinsMarketsFragment): RecyclerVi
         val change7Days = coin.priceChangePercentage7dInCurrency?.let { (it * 100).roundToInt() / 100.0 }
         holder.tv7Days.text = change7Days.toString()
         holder.tv7DaysLabel.text = "% 7д"
+        holder.itemView.setOnClickListener {
+            onCoinClickListener?.onCoinClick(coin)
+        }
 
     }
 
     override fun getItemCount() = coinsMarketsList.size
 
     inner class CoinsMarketsViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-        val ivCoinIcon = itemView.ivCoinIcon
-        val tvMarketCapRank = itemView.tvMarketCapRank
-        val tvSymbol = itemView.tvSymbol
+        val ivCoinIcon: ImageView = itemView.ivCoinIcon
+        val tvMarketCapRank: TextView = itemView.tvMarketCapRank
+        val tvSymbol: TextView = itemView.tvSymbol
         val ivFavorite = itemView.ivFavorite
         val tvName = itemView.tvName
         val tvFirstCurrencyLabel1 = itemView.tvFirstCurrencyLabel1
@@ -66,4 +73,9 @@ class CoinsMarketsAdapter(private val context: CoinsMarketsFragment): RecyclerVi
         val tv7Days = itemView.tv7Days
         val tv7DaysLabel = itemView.tv7DaysLabel
     }
+
+    interface OnCoinClickListener{
+        fun onCoinClick(coinsMarkets: CoinsMarkets)
+    }
+
 }
