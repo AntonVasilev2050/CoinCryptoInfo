@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.avvsoft2050.coincryptoinfo.R
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
+import com.avvsoft2050.coincryptoinfo.ui.main.CoinsMarketsFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_coins_markets.view.*
 import kotlin.math.roundToInt
 
-class CoinsMarketsAdapter: RecyclerView.Adapter<CoinsMarketsAdapter.CoinsMarketsViewHolder>() {
+class CoinsMarketsAdapter(private val context: CoinsMarketsFragment): RecyclerView.Adapter<CoinsMarketsAdapter.CoinsMarketsViewHolder>() {
 
     var coinsMarketsList: List<CoinsMarkets> = listOf()
     set(value) {
@@ -26,12 +27,13 @@ class CoinsMarketsAdapter: RecyclerView.Adapter<CoinsMarketsAdapter.CoinsMarkets
     override fun onBindViewHolder(holder: CoinsMarketsViewHolder, position: Int) {
         val coin = coinsMarketsList[position]
         Picasso.get().load(coin.image).into(holder.ivCoinIcon)
-        holder.tvMarketCapRank.text = "${coin.marketCapRank.toString()}."
+        holder.tvMarketCapRank.text = coin.marketCapRank.toString() + "."
+//        holder.tvMarketCapRank.text = context.getString(R.string.coin_market_cap_rank)
         holder.tvSymbol.text = coin.symbol.uppercase()
         holder.tvName.text = coin.name
         holder.tvFirstCurrencyLabel1.text = "$"
         holder.tvFirstCurrentPrice.text = coin.currentPrice.toString()
-        holder.tvLastUpdatedLabel.text = "Обновлено в:"
+        holder.tvLastUpdatedLabel.text = context.getString(R.string.last_updated)
         holder.tvLastUpdated.text = coin.lastUpdated?.dropLast(5)
         val changeHour = coin.priceChangePercentage1hInCurrency?.let { (it * 100).roundToInt() / 100.0 }
         holder.tvHour.text = changeHour.toString()

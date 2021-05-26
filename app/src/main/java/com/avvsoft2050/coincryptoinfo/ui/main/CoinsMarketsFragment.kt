@@ -1,11 +1,9 @@
 package com.avvsoft2050.coincryptoinfo.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.avvsoft2050.coincryptoinfo.R
 import com.avvsoft2050.coincryptoinfo.adapters.CoinsMarketsAdapter
 import com.avvsoft2050.coincryptoinfo.databinding.FragmentMainBinding
-import kotlinx.android.synthetic.*
 
 //import kotlinx.android.synthetic.main.fragment_main.*
 
@@ -37,7 +34,7 @@ class CoinsMarketsFragment : Fragment() {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val root: View = binding.root
         rvCoinsMarketsList = root.findViewById(R.id.rvCoinsMarketsList)
-        val adapter = CoinsMarketsAdapter()
+        val adapter = CoinsMarketsAdapter(this)
         rvCoinsMarketsList.adapter = adapter
         coinsMarketsViewModel.coinsMarketsList.observe(viewLifecycleOwner, Observer {
             adapter.coinsMarketsList = it
