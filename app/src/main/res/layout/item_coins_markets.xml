@@ -71,45 +71,46 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:textSize="20sp"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivCoinIcon"
             tools:text="$" />
 
         <TextView
-            android:id="@+id/tvSecondCurrencyLabel2"
+            android:id="@+id/tvLastUpdatedLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:textSize="20sp"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvFirstCurrencyLabel1"
-            tools:text="P" />
+            tools:text="Обновлено в:" />
 
         <TextView
             android:id="@+id/tvFirstCurrentPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="24sp"
             app:layout_constraintStart_toEndOf="@+id/tvFirstCurrencyLabel1"
             app:layout_constraintTop_toTopOf="@+id/tvFirstCurrencyLabel1"
             tools:text="45,000.08" />
 
         <TextView
-            android:id="@+id/tvSecondCurrentPrice"
+            android:id="@+id/tvLastUpdated"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/tvSecondCurrencyLabel2"
-            app:layout_constraintTop_toTopOf="@+id/tvSecondCurrencyLabel2"
-            tools:text="3,228,432.12" />
+            android:layout_marginStart="8dp"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/tvLastUpdatedLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvLastUpdatedLabel"
+            tools:text="10:59:03" />
 
         <TextView
             android:id="@+id/tvHourLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvFirstCurrentPrice"
             tools:text="% 1ч" />
@@ -118,8 +119,7 @@
             android:id="@+id/tvDayLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvHourLabel"
             tools:text="% 1д" />
@@ -128,8 +128,7 @@
             android:id="@+id/tv7DaysLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDayLabel"
             tools:text="% 7д" />

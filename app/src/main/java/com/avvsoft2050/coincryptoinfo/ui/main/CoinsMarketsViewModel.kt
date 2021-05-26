@@ -5,14 +5,11 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.avvsoft2050.coincryptoinfo.api.ApiFactory
 import com.avvsoft2050.coincryptoinfo.database.AppDatabase
-import com.avvsoft2050.coincryptoinfo.database.CoinsMarketsDao
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.delay
 import java.util.concurrent.TimeUnit
 
 class CoinsMarketsViewModel(application: Application) : AndroidViewModel(application) {

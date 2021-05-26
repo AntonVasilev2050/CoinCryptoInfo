@@ -34,7 +34,6 @@ class CoinsMarketsFragment : Fragment() {
     ): View {
         coinsMarketsViewModel =
             ViewModelProvider(this).get(CoinsMarketsViewModel::class.java)
-
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val root: View = binding.root
         rvCoinsMarketsList = root.findViewById(R.id.rvCoinsMarketsList)
@@ -43,13 +42,7 @@ class CoinsMarketsFragment : Fragment() {
         coinsMarketsViewModel.coinsMarketsList.observe(viewLifecycleOwner, Observer {
             adapter.coinsMarketsList = it
         })
-
-//        val textView: TextView = binding.textHome
-//        coinsMarketsViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
         return root
-
     }
 
     override fun onDestroyView() {

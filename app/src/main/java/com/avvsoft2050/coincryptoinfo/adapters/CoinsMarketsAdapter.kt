@@ -8,6 +8,7 @@ import com.avvsoft2050.coincryptoinfo.R
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_coins_markets.view.*
+import kotlin.math.roundToInt
 
 class CoinsMarketsAdapter: RecyclerView.Adapter<CoinsMarketsAdapter.CoinsMarketsViewHolder>() {
 
@@ -32,13 +33,14 @@ class CoinsMarketsAdapter: RecyclerView.Adapter<CoinsMarketsAdapter.CoinsMarkets
         holder.tvFirstCurrentPrice.text = coin.currentPrice.toString()
         holder.tvSecondCurrencyLabel2.text = "P"
 //        holder.tvSecondCurrentPrice.text = " "
-        val changeHour = coin.priceChangePercentage1hInCurrency?.let { Math.round(it * 100) / 100.0 }
+        val changeHour = coin.priceChangePercentage1hInCurrency?.let { (it * 100).roundToInt() / 100.0 }
         holder.tvHour.text = changeHour.toString()
         holder.tvHourLabel.text = "% 1ч"
-
-        holder.tvDay.text = coin.priceChangePercentage24hInCurrency.toString()
+        val changeDay = coin.priceChangePercentage24hInCurrency?.let { (it * 100).roundToInt() / 100.0 }
+        holder.tvDay.text = changeDay.toString()
         holder.tvDayLabel.text = "% 1д"
-        holder.tv7Days.text = coin.priceChangePercentage7dInCurrency.toString()
+        val change7Days = coin.priceChangePercentage7dInCurrency?.let { (it * 100).roundToInt() / 100.0 }
+        holder.tv7Days.text = change7Days.toString()
         holder.tv7DaysLabel.text = "% 7д"
 
     }
@@ -53,8 +55,8 @@ class CoinsMarketsAdapter: RecyclerView.Adapter<CoinsMarketsAdapter.CoinsMarkets
         val tvName = itemView.tvName
         val tvFirstCurrencyLabel1 = itemView.tvFirstCurrencyLabel1
         val tvFirstCurrentPrice = itemView.tvFirstCurrentPrice
-        val tvSecondCurrencyLabel2 = itemView.tvSecondCurrencyLabel2
-        val tvSecondCurrentPrice = itemView.tvSecondCurrentPrice
+        val tvSecondCurrencyLabel2 = itemView.tvLastUpdatedLabel
+        val tvSecondCurrentPrice = itemView.tvLastUpdated
         val tvHour = itemView.tvHour
         val tvHourLabel = itemView.tvHourLabel
         val tvDay = itemView.tvDay
