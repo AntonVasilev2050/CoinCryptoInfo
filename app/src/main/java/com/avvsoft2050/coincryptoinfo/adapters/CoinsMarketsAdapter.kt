@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.avvsoft2050.coincryptoinfo.R
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
@@ -13,7 +14,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_coins_markets.view.*
 import kotlin.math.roundToInt
 
-class CoinsMarketsAdapter(private val context: CoinsMarketsFragment): RecyclerView.Adapter<CoinsMarketsAdapter.CoinsMarketsViewHolder>() {
+class CoinsMarketsAdapter(private val context: FragmentActivity): RecyclerView.Adapter<CoinsMarketsAdapter.CoinsMarketsViewHolder>() {
 
     var coinsMarketsList: List<CoinsMarkets> = listOf()
     set(value) {
