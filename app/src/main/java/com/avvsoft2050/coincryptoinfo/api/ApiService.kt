@@ -10,7 +10,7 @@ interface ApiService {
     fun getCoinsMarkets(
         @Query(QUERY_PARAM_VS_CURRENCY) vsCurrency: String = "usd",
         @Query(QUERY_PARAM_ORDER) order: String = "market_cap_desc",
-        @Query(QUERY_PARAM_PER_PAGE) perPage: Int = 20,
+        @Query(QUERY_PARAM_PER_PAGE) perPage: Int = 100,
         @Query(QUERY_PARAM_PAGE) page: Int = 1,
         @Query(QUERY_PARAM_SPARKLINE) sparkline: Boolean = false,
         @Query(QUERY_PARAM_PRICE_CHANGE_PERCENTAGE) priceChangePercentage: String = "1h,24h,7d,14d,30d,200d,1y"

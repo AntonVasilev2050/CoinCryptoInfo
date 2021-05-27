@@ -6,11 +6,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
 
-@Database(entities = [CoinsMarkets::class], version = 1, exportSchema = false)
+@Database(entities = [CoinsMarkets::class], version = 10, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     companion object {
         private var db: AppDatabase? = null
-        private const val DB_NAME = "main.db"
+        private const val DB_NAME = "main10.db"
         private val LOCK = Any()
 
         fun getInstance(context: Context): AppDatabase {
