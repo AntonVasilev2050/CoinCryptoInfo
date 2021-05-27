@@ -30,8 +30,10 @@ class CoinsMarketsAdapter(private val context: CoinsMarketsFragment): RecyclerVi
 
     override fun onBindViewHolder(holder: CoinsMarketsViewHolder, position: Int) {
         val coin = coinsMarketsList[position]
+        val red = context.resources.getColor(android.R.color.holo_red_light)
+        val green = context.resources.getColor(android.R.color.holo_green_light)
         Picasso.get().load(coin.image).into(holder.ivCoinIcon)
-        holder.tvMarketCapRank.text = coin.marketCapRank.toString() + "."
+        holder.tvMarketCapRank.text = coin.marketCapRank.toString()
 //        holder.tvMarketCapRank.text = context.getString(R.string.coin_market_cap_rank)
         holder.tvSymbol.text = coin.symbol.uppercase()
         holder.tvName.text = coin.name
@@ -40,18 +42,44 @@ class CoinsMarketsAdapter(private val context: CoinsMarketsFragment): RecyclerVi
         holder.tvLastUpdatedLabel.text = context.getString(R.string.last_updated)
         holder.tvLastUpdated.text = coin.lastUpdated?.dropLast(5)
         val changeHour = coin.priceChangePercentage1hInCurrency?.let { (it * 100).roundToInt() / 100.0 }
+        changeHour?.let {
+            if (it < 0){
+                holder.tvHour.setTextColor(red)
+                holder.tvHourLabel.setTextColor(red)
+            }else{
+                holder.tvHour.setTextColor(green)
+                holder.tvHourLabel.setTextColor(green)
+            }
+        }
         holder.tvHour.text = changeHour.toString()
         holder.tvHourLabel.text = "% 1ч"
         val changeDay = coin.priceChangePercentage24hInCurrency?.let { (it * 100).roundToInt() / 100.0 }
+        changeDay?.let {
+            if (it < 0){
+                holder.tvDay.setTextColor(red)
+                holder.tvDayLabel.setTextColor(red)
+            }else{
+                holder.tvDay.setTextColor(green)
+                holder.tvDayLabel.setTextColor(green)
+            }
+        }
         holder.tvDay.text = changeDay.toString()
         holder.tvDayLabel.text = "% 1д"
         val change7Days = coin.priceChangePercentage7dInCurrency?.let { (it * 100).roundToInt() / 100.0 }
+        change7Days?.let {
+            if (it < 0){
+                holder.tv7Days.setTextColor(red)
+                holder.tv7DaysLabel.setTextColor(red)
+            }else{
+                holder.tv7Days.setTextColor(green)
+                holder.tv7DaysLabel.setTextColor(green)
+            }
+        }
         holder.tv7Days.text = change7Days.toString()
         holder.tv7DaysLabel.text = "% 7д"
         holder.itemView.setOnClickListener {
             onCoinClickListener?.onCoinClick(coin)
         }
-
     }
 
     override fun getItemCount() = coinsMarketsList.size

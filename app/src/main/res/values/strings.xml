@@ -12,5 +12,5 @@
     <string name="coin_icon">Иконка монеты</string>
     <string name="mark_as_favorite">Отметить избранной</string>
     <string name="dot">.</string>
-    <string name="last_updated">Обновлено в:</string>
+    <string name="last_updated">Обновлено:</string>
 </resources>
