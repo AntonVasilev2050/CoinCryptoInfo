@@ -9,7 +9,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.avvsoft2050.coincryptoinfo.R
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
-import com.avvsoft2050.coincryptoinfo.ui.main.CoinsMarketsFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_coins_markets.view.*
 import kotlin.math.roundToInt
@@ -91,7 +90,7 @@ class CoinsMarketsAdapter(private val context: FragmentActivity): RecyclerView.A
         val tvSymbol: TextView = itemView.tvSymbol
         val ivFavorite = itemView.ivFavorite
         val tvName = itemView.tvName
-        val tvFirstCurrencyLabel1 = itemView.tvFirstCurrencyLabel1
+        val tvFirstCurrencyLabel1 = itemView.tvCurrencyLabel
         val tvFirstCurrentPrice = itemView.tvFirstCurrentPrice
         val tvLastUpdatedLabel = itemView.tvLastUpdatedLabel
         val tvLastUpdated = itemView.tvLastUpdated

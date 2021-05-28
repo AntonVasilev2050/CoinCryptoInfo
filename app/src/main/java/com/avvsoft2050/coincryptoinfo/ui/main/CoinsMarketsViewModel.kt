@@ -30,7 +30,7 @@ class CoinsMarketsViewModel(application: Application) : AndroidViewModel(applica
     }
 
     private fun loadData(){
-        val disposable = ApiFactory.apiService.getCoinsMarkets(vsCurrency = firstCurrency)
+        val disposable = ApiFactory.apiService.getCoinsMarkets(vsCurrency = firstCurrency, perPage = 100)
             .delaySubscription(10, TimeUnit.SECONDS)
             .repeat()
             .retry()
