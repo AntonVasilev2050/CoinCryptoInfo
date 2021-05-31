@@ -13,4 +13,15 @@
     <string name="mark_as_favorite">Отметить избранной</string>
     <string name="dot">.</string>
     <string name="last_updated">Обновлено:</string>
+    <string name="add_to_portfolio">в портфолио</string>
+    <string name="year">1год</string>
+    <string name="_200_days">200д</string>
+    <string name="_30_days">30д</string>
+    <string name="_14_days">14д</string>
+    <string name="_7_days">7д</string>
+    <string name="_1_day">1д</string>
+    <string name="_1_hour">1ч</string>
+    <string name="_perсentage_label">%</string>
+    <string name="buy_coin">Купить монету</string>
+    <string name="market_cap_label">Рыночная капитализация</string>
 </resources>

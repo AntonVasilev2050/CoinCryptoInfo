@@ -90,8 +90,8 @@ class CoinsMarketsAdapter(private val context: FragmentActivity): RecyclerView.A
         val tvSymbol: TextView = itemView.tvSymbol
         val ivFavorite = itemView.ivFavorite
         val tvName = itemView.tvName
-        val tvFirstCurrencyLabel1 = itemView.tvCurrencyLabel
-        val tvFirstCurrentPrice = itemView.tvFirstCurrentPrice
+        val tvFirstCurrencyLabel1 = itemView.tvCurrencyLabelD
+        val tvFirstCurrentPrice = itemView.tvFirstCurrentPriceD
         val tvLastUpdatedLabel = itemView.tvLastUpdatedLabel
         val tvLastUpdated = itemView.tvLastUpdated
         val tvHour = itemView.tvHour
