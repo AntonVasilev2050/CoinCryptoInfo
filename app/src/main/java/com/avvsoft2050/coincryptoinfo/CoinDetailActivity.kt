@@ -49,7 +49,6 @@ class CoinDetailActivity : AppCompatActivity() {
                         tvPercentage24Hour.setTextColor(red)
                     } else {
                         tvPercentage24Hour.setTextColor(green)
-                        tvPercentage24Hour.text = change24Hours.unaryPlus().toString()
                     }
                     tvPercentage24Hour.text = change24Hours.toString()
                 }
@@ -62,6 +61,11 @@ class CoinDetailActivity : AppCompatActivity() {
                     }
                     tvPercentage7Days.text = change7Days.toString()
                 }
+                tvMarketCap.text = it.marketCap.toString()
+                tvCirculatingSupply.text = it.circulatingSupply?.toBigDecimal().toString()
+                tvTotalSupply.text = it.totalSupply?.toBigDecimal()?.toPlainString()
+                tvMaxSupply.text = it.maxSupply?.toBigDecimal()?.toPlainString()
+                tvTotalVolume.text = it.totalVolume.toString()
             })
         }
     }
