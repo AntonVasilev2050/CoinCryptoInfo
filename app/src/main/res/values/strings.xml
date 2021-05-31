@@ -24,4 +24,6 @@
     <string name="_perсentage_label">%</string>
     <string name="buy_coin">Купить монету</string>
     <string name="market_cap_label">Рыночная капитализация</string>
+    <string name="coin_change_graph">График изменения цены монеты</string>
+    <string name="change_price">Изменение цены за:</string>
 </resources>

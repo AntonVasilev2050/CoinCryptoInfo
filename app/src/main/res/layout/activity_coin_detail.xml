@@ -1,424 +1,430 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CoinDetailActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvCurrencyLabelD"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="$" />
+        tools:context=".CoinDetailActivity">
 
-    <TextView
-        android:id="@+id/tvFirstCurrentPriceD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tvCurrencyLabelD"
-        app:layout_constraintTop_toTopOf="@+id/tvCurrencyLabelD"
-        tools:text="45,001.03" />
+        <TextView
+            android:id="@+id/tvCurrencyLabelD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="$" />
 
-    <TextView
-        android:id="@+id/tvChangePercentageD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvFirstCurrentPriceD"
-        app:layout_constraintStart_toEndOf="@+id/tvFirstCurrentPriceD"
-        app:layout_constraintTop_toTopOf="@+id/tvFirstCurrentPriceD"
-        tools:text="-1.08" />
+        <TextView
+            android:id="@+id/tvFirstCurrentPriceD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/tvCurrencyLabelD"
+            app:layout_constraintTop_toTopOf="@+id/tvCurrencyLabelD"
+            android:text="45,001.03" />
 
-    <TextView
-        android:id="@+id/tvChangePercentageLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="@string/_perсentage_label"
-        app:layout_constraintBottom_toBottomOf="@+id/tvChangePercentageD"
-        app:layout_constraintStart_toEndOf="@+id/tvChangePercentageD" />
+        <TextView
+            android:id="@+id/tvChangePercentageD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvFirstCurrentPriceD"
+            app:layout_constraintStart_toEndOf="@+id/tvFirstCurrentPriceD"
+            app:layout_constraintTop_toTopOf="@+id/tvFirstCurrentPriceD"
+            android:text="-1.08" />
 
-    <Button
-        android:id="@+id/button1Hour"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:text="@string/_1_hour"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        <TextView
+            android:id="@+id/tvChangePercentageLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/_perсentage_label"
+            app:layout_constraintBottom_toBottomOf="@+id/tvChangePercentageD"
+            app:layout_constraintStart_toEndOf="@+id/tvChangePercentageD" />
 
-    <Button
-        android:id="@+id/button24Hours"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:text="@string/_1_day"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/button1Hour"
-        app:layout_constraintTop_toTopOf="@+id/button1Hour" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCurrencyLabelD"
+            app:srcCompat="@android:drawable/ic_menu_gallery"
+            android:contentDescription="@string/coin_change_graph" />
 
-    <Button
-        android:id="@+id/button7Days"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:text="@string/_7_days"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/button24Hours"
-        app:layout_constraintTop_toTopOf="@+id/button24Hours" />
+        <Button
+            android:id="@+id/button1Hour"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:text="@string/_1_hour"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <Button
-        android:id="@+id/button14Days"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:text="@string/_14_days"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/button7Days"
-        app:layout_constraintTop_toTopOf="@+id/button7Days" />
+        <Button
+            android:id="@+id/button24Hours"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:text="@string/_1_day"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/button1Hour"
+            app:layout_constraintTop_toTopOf="@+id/button1Hour" />
 
-    <Button
-        android:id="@+id/button30Days"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:text="@string/_30_days"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/button14Days"
-        app:layout_constraintTop_toTopOf="@+id/button14Days" />
+        <Button
+            android:id="@+id/button7Days"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:text="@string/_7_days"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/button24Hours"
+            app:layout_constraintTop_toTopOf="@+id/button24Hours" />
 
-    <Button
-        android:id="@+id/button200Days"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:text="@string/_200_days"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/button30Days"
-        app:layout_constraintTop_toTopOf="@+id/button30Days" />
+        <Button
+            android:id="@+id/button14Days"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:text="@string/_14_days"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/button7Days"
+            app:layout_constraintTop_toTopOf="@+id/button7Days" />
 
-    <Button
-        android:id="@+id/button1Year"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:text="@string/year"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/button200Days"
-        app:layout_constraintTop_toTopOf="@+id/button200Days" />
+        <Button
+            android:id="@+id/button30Days"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:text="@string/_30_days"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/button14Days"
+            app:layout_constraintTop_toTopOf="@+id/button14Days" />
 
-    <Button
-        android:id="@+id/buttonAddToPortfolio"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/add_to_portfolio"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonBuyCoins"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button1Hour" />
+        <Button
+            android:id="@+id/button200Days"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:text="@string/_200_days"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/button30Days"
+            app:layout_constraintTop_toTopOf="@+id/button30Days" />
 
-    <Button
-        android:id="@+id/buttonBuyCoins"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/buy_coin"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonAddToPortfolio"
-        app:layout_constraintTop_toTopOf="@+id/buttonAddToPortfolio" />
+        <Button
+            android:id="@+id/button1Year"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:text="@string/year"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/button200Days"
+            app:layout_constraintTop_toTopOf="@+id/button200Days" />
 
-    <TextView
-        android:id="@+id/tvPriceLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Изменение цены за:"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAddToPortfolio" />
+        <Button
+            android:id="@+id/buttonAddToPortfolio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/add_to_portfolio"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/buttonBuyCoins"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button1Hour" />
 
-    <TextView
-        android:id="@+id/tvPeriod"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="24 часа"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tvPriceLabel"
-        app:layout_constraintTop_toTopOf="@+id/tvPriceLabel" />
+        <Button
+            android:id="@+id/buttonBuyCoins"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/buy_coin"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buttonAddToPortfolio"
+            app:layout_constraintTop_toTopOf="@+id/buttonAddToPortfolio" />
 
-    <TextView
-        android:id="@+id/tvMinPriceLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Минимальная цена:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPriceLabel" />
+        <TextView
+            android:id="@+id/tvPriceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/change_price"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonAddToPortfolio" />
 
-    <TextView
-        android:id="@+id/tvMinPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="$25,000.00"
-        app:layout_constraintStart_toEndOf="@+id/tvMinPriceLabel"
-        app:layout_constraintTop_toTopOf="@+id/tvMinPriceLabel" />
+        <TextView
+            android:id="@+id/tvPeriod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            tools:text="24 часа"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/tvPriceLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvPriceLabel" />
 
-    <TextView
-        android:id="@+id/tvMaxPriceLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Максимальная цена:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMinPriceLabel" />
+        <TextView
+            android:id="@+id/tvMinPriceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Минимальная цена:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPriceLabel" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="$40,000.00"
-        app:layout_constraintStart_toEndOf="@+id/tvMaxPriceLabel"
-        app:layout_constraintTop_toTopOf="@+id/tvMaxPriceLabel" />
+        <TextView
+            android:id="@+id/tvMinPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="$25,000.00"
+            app:layout_constraintStart_toEndOf="@+id/tvMinPriceLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvMinPriceLabel" />
 
-    <View
-        android:id="@+id/viewLine1"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMaxPriceLabel" />
+        <TextView
+            android:id="@+id/tvMaxPriceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Максимальная цена:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMinPriceLabel" />
 
-    <TextView
-        android:id="@+id/tvPercentage1HourLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="% изменения за 1 час:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewLine1" />
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="$40,000.00"
+            app:layout_constraintStart_toEndOf="@+id/tvMaxPriceLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvMaxPriceLabel" />
 
-    <TextView
-        android:id="@+id/tvPercentage1DayLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="% изменения за 24 часа:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPercentage1HourLabel" />
+        <View
+            android:id="@+id/viewLine1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMaxPriceLabel" />
 
-    <TextView
-        android:id="@+id/tvPercentage7DaysLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="% изменения за 7 дней:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPercentage1DayLabel" />
+        <TextView
+            android:id="@+id/tvPercentage1HourLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="% изменения за 1 час:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewLine1" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCurrencyLabelD"
-        app:srcCompat="@android:drawable/ic_menu_gallery" />
+        <TextView
+            android:id="@+id/tvPercentage1DayLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="% изменения за 24 часа:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPercentage1HourLabel" />
 
-    <TextView
-        android:id="@+id/tvPercentage1Hour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/tvPercentage1HourLabel"
-        app:layout_constraintTop_toTopOf="@+id/tvPercentage1HourLabel" />
+        <TextView
+            android:id="@+id/tvPercentage7DaysLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="% изменения за 7 дней:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPercentage1DayLabel" />
 
-    <View
-        android:id="@+id/viewLine2"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPercentage7DaysLabel" />
+        <TextView
+            android:id="@+id/tvPercentage1Hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="TextView"
+            app:layout_constraintStart_toEndOf="@+id/tvPercentage1HourLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvPercentage1HourLabel" />
 
-    <TextView
-        android:id="@+id/tvPercentage1Day"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/tvPercentage1DayLabel"
-        app:layout_constraintTop_toTopOf="@+id/tvPercentage1DayLabel" />
+        <View
+            android:id="@+id/viewLine2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPercentage7DaysLabel" />
 
-    <TextView
-        android:id="@+id/tvPercentage7Days"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/tvPercentage7DaysLabel"
-        app:layout_constraintTop_toTopOf="@+id/tvPercentage7DaysLabel" />
+        <TextView
+            android:id="@+id/tvPercentage1Day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="TextView"
+            app:layout_constraintStart_toEndOf="@+id/tvPercentage1DayLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvPercentage1DayLabel" />
 
-    <TextView
-        android:id="@+id/tvMarketStatisticLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Рыночная статистика"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewLine2" />
+        <TextView
+            android:id="@+id/tvPercentage7Days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="-02%"
+            app:layout_constraintStart_toEndOf="@+id/tvPercentage7DaysLabel"
+            app:layout_constraintTop_toTopOf="@+id/tvPercentage7DaysLabel" />
 
-    <TextView
-        android:id="@+id/tvMarketCapLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/market_cap_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMarketStatisticLabel" />
+        <TextView
+            android:id="@+id/tvMarketStatisticLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Рыночная статистика"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewLine2" />
 
-    <TextView
-        android:id="@+id/tvCirculatingSupplyLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Предложение"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMarketCapLabel" />
+        <TextView
+            android:id="@+id/tvMarketCapLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/market_cap_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMarketStatisticLabel" />
 
-    <TextView
-        android:id="@+id/tvTotalSupplyLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Общее предложение"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCirculatingSupplyLabel" />
+        <TextView
+            android:id="@+id/tvCirculatingSupplyLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Предложение"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMarketCapLabel" />
 
-    <TextView
-        android:id="@+id/tvMaxSupplyLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Макс. предложение"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTotalSupplyLabel" />
+        <TextView
+            android:id="@+id/tvTotalSupplyLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Общее предложение"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCirculatingSupplyLabel" />
 
-    <TextView
-        android:id="@+id/tvTotalVolumeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Объём(за 24 часа)"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMaxSupplyLabel" />
+        <TextView
+            android:id="@+id/tvMaxSupplyLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Макс. предложение"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalSupplyLabel" />
 
-    <TextView
-        android:id="@+id/tvMarketCap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMarketStatisticLabel" />
+        <TextView
+            android:id="@+id/tvTotalVolumeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Объём(за 24 часа)"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMaxSupplyLabel" />
 
-    <TextView
-        android:id="@+id/tvCirculatingSupply"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="16dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMarketCap" />
+        <TextView
+            android:id="@+id/tvMarketCap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMarketStatisticLabel" />
 
-    <TextView
-        android:id="@+id/tvTotalSupply"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCirculatingSupply" />
+        <TextView
+            android:id="@+id/tvCirculatingSupply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMarketCap" />
 
-    <TextView
-        android:id="@+id/tvMaxSupply"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="16dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTotalSupply" />
+        <TextView
+            android:id="@+id/tvTotalSupply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCirculatingSupply" />
 
-    <TextView
-        android:id="@+id/tvTotalVolume"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMaxSupply" />
+        <TextView
+            android:id="@+id/tvMaxSupply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalSupply" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvTotalVolume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMaxSupply" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
