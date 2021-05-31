@@ -60,11 +60,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:contentDescription="@string/coin_change_graph"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCurrencyLabelD"
-            app:srcCompat="@android:drawable/ic_menu_gallery"
-            android:contentDescription="@string/coin_change_graph" />
+            app:layout_constraintTop_toBottomOf="@+id/ivCoinIconD"
+            app:srcCompat="@android:drawable/ic_menu_gallery" />
 
         <Button
             android:id="@+id/button1Hour"
@@ -430,12 +430,21 @@
 
         <ImageView
             android:id="@+id/ivCoinIconD"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+        <TextView
+            android:id="@+id/tvNameD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="bitcoin"
+            app:layout_constraintStart_toEndOf="@+id/ivCoinIconD"
+            app:layout_constraintTop_toBottomOf="@+id/tvCurrencyLabelD" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

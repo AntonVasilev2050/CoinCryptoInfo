@@ -34,6 +34,7 @@ class CoinDetailActivity : AppCompatActivity() {
                 val red = resources.getColor(android.R.color.holo_red_light)
                 val green = resources.getColor(android.R.color.holo_green_light)
                 Picasso.get().load(it.image).into(ivCoinIconD)
+                tvNameD.text = it.name
                 tvFirstCurrentPriceD.text = it.currentPrice.toString()
                 tvMinPrice.text = "$currencyLabel${it.low24h}"
                 tvMaxPrice.text = "$currencyLabel${it.high24h}"
