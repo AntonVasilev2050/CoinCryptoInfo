@@ -199,7 +199,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            tools:text="24 часа"
+            android:text="@string/_24_hours"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/tvPriceLabel"
             app:layout_constraintTop_toTopOf="@+id/tvPriceLabel" />
@@ -218,7 +218,7 @@
             android:id="@+id/tvMinPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="24dp"
             android:text="$25,000.00"
             app:layout_constraintStart_toEndOf="@+id/tvMinPriceLabel"
             app:layout_constraintTop_toTopOf="@+id/tvMinPriceLabel" />
@@ -229,12 +229,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Максимальная цена:"
+            android:text="@string/max_price_label"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvMinPriceLabel" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/tvMaxPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -257,17 +257,17 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="% изменения за 1 час:"
+            android:text="@string/percentage_1_hour"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewLine1" />
 
         <TextView
-            android:id="@+id/tvPercentage1DayLabel"
+            android:id="@+id/tvPercentage24HourLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="% изменения за 24 часа:"
+            android:text="@string/percentage_24_hours"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvPercentage1HourLabel" />
 
@@ -277,17 +277,17 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="% изменения за 7 дней:"
+            android:text="@string/percentage_7_days"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPercentage1DayLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/tvPercentage24HourLabel" />
 
         <TextView
             android:id="@+id/tvPercentage1Hour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginEnd="24dp"
             android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/tvPercentage1HourLabel"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvPercentage1HourLabel" />
 
         <View
@@ -300,21 +300,21 @@
             app:layout_constraintTop_toBottomOf="@+id/tvPercentage7DaysLabel" />
 
         <TextView
-            android:id="@+id/tvPercentage1Day"
+            android:id="@+id/tvPercentage24Hour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginEnd="24dp"
             android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/tvPercentage1DayLabel"
-            app:layout_constraintTop_toTopOf="@+id/tvPercentage1DayLabel" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvPercentage24HourLabel" />
 
         <TextView
             android:id="@+id/tvPercentage7Days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             android:text="-02%"
-            app:layout_constraintStart_toEndOf="@+id/tvPercentage7DaysLabel"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvPercentage7DaysLabel" />
 
         <TextView
@@ -322,7 +322,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Рыночная статистика"
+            android:text="@string/market_statistic"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewLine2" />
@@ -343,7 +344,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Предложение"
+            android:text="@string/supply"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvMarketCapLabel" />
 
@@ -353,7 +354,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Общее предложение"
+            android:text="@string/total_supply"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCirculatingSupplyLabel" />
 
@@ -363,7 +364,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Макс. предложение"
+            android:text="@string/max_supply"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTotalSupplyLabel" />
 
@@ -373,7 +374,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Объём(за 24 часа)"
+            android:text="@string/_24_hours_volume"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvMaxSupplyLabel" />
 

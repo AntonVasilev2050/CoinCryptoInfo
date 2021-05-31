@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CoinCryptoInfo</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+
     <string name="title_notifications">Notifications</string>
     <string name="title_favorite">Избранное</string>
     <string name="title_main">Главная</string>
@@ -26,4 +26,15 @@
     <string name="market_cap_label">Рыночная капитализация</string>
     <string name="coin_change_graph">График изменения цены монеты</string>
     <string name="change_price">Изменение цены за:</string>
+    <string name="_24_hours_volume">Объём(за 24 часа)</string>
+    <string name="max_supply">Макс. предложение</string>
+    <string name="total_supply">Общее предложение</string>
+    <string name="supply">Предложение</string>
+    <string name="market_statistic">Рыночная статистика</string>
+    <string name="percentage_7_days">% изменения за 7 дней:</string>
+    <string name="percentage_24_hours">% изменения за 24 часа:</string>
+    <string name="percentage_1_hour">% изменения за 1 час:</string>
+    <string name="max_price_label">Максимальная цена:</string>
+    <string name="min_price_label">Минимальная цена:</string>
+    <string name="_24_hours">24 часа</string>
 </resources>
