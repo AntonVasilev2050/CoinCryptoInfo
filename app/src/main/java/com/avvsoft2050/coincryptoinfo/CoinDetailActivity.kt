@@ -8,8 +8,10 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.avvsoft2050.coincryptoinfo.ui.main.CoinsMarketsViewModel
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_coin_detail.*
 import kotlin.math.roundToInt
+import kotlin.math.roundToLong
 
 class CoinDetailActivity : AppCompatActivity() {
 
@@ -31,6 +33,7 @@ class CoinDetailActivity : AppCompatActivity() {
                 Log.d("DETAIL_INFO", it.toString())
                 val red = resources.getColor(android.R.color.holo_red_light)
                 val green = resources.getColor(android.R.color.holo_green_light)
+                Picasso.get().load(it.image).into(ivCoinIconD)
                 tvFirstCurrentPriceD.text = it.currentPrice.toString()
                 tvMinPrice.text = "$currencyLabel${it.low24h}"
                 tvMaxPrice.text = "$currencyLabel${it.high24h}"
@@ -62,10 +65,10 @@ class CoinDetailActivity : AppCompatActivity() {
                     tvPercentage7Days.text = change7Days.toString()
                 }
                 tvMarketCap.text = it.marketCap.toString()
-                tvCirculatingSupply.text = it.circulatingSupply?.toBigDecimal().toString()
-                tvTotalSupply.text = it.totalSupply?.toBigDecimal()?.toPlainString()
-                tvMaxSupply.text = it.maxSupply?.toBigDecimal()?.toPlainString()
-                tvTotalVolume.text = it.totalVolume.toString()
+                tvCirculatingSupply.text = it.circulatingSupply?.roundToLong()?.toString() ?: "нет данных"
+                tvTotalSupply.text = it.totalSupply?.roundToLong()?.toString() ?: "нет данных"
+                tvMaxSupply.text = it.maxSupply?.roundToLong()?.toString() ?: "нет данных"
+                tvTotalVolume.text = it.totalVolume?.toString() ?: "нет данных"
             })
         }
     }
