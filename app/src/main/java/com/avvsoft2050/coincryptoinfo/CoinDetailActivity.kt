@@ -12,7 +12,6 @@ import com.avvsoft2050.coincryptoinfo.ui.main.CoinsMarketsViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_coin_detail.*
 import kotlinx.android.synthetic.main.activity_coin_detail.tvFirstCurrentPriceD
-import kotlinx.android.synthetic.main.item_coins_markets.*
 import kotlin.math.roundToInt
 import kotlin.math.roundToLong
 
@@ -76,6 +75,12 @@ class CoinDetailActivity : AppCompatActivity() {
                 tvMaxSupply.text = it.maxSupply?.roundToLong()?.toString() ?: "нет данных"
                 tvTotalVolume.text = it.totalVolume?.toString() ?: "нет данных"
             })
+            fun onClickSwitchFavorite(view: View) {
+                val favoriteCoinsMarkets = coinsMarketsViewModel.getFavoriteCoinsMarketsBySymbol(symbol)
+                if (favoriteCoinsMarkets == null){
+                    coinsMarketsViewModel.insertFavoriteCoinsMarkets(favoriteCoinsMarkets)
+                }
+            }
         }
     }
 

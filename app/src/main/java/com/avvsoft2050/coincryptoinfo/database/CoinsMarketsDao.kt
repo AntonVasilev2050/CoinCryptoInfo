@@ -23,8 +23,11 @@ interface CoinsMarketsDao {
     @Query("SELECT * FROM favorite_coins_markets ORDER BY marketCapRank")
     fun getFavoriteCoinsMarketsList():LiveData<List<FavoriteCoinsMarkets>>
 
+    @Query("SELECT * FROM favorite_coins_markets WHERE symbol == :s")
+    fun getFavoriteCoinsMarketsBySymbol(s: String):FavoriteCoinsMarkets?
+
     @Insert
-    fun insertFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets)
+    fun insertFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets?)
 
     @Delete
     fun deleteFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets)

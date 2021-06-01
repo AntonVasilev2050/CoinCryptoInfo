@@ -4,10 +4,10 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.avvsoft2050.coincryptoinfo.api.ApiFactory
 import com.avvsoft2050.coincryptoinfo.database.AppDatabase
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
+import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoinsMarkets
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
@@ -20,6 +20,7 @@ class CoinsMarketsViewModel(application: Application) : AndroidViewModel(applica
     private val secondCurrency = "rub"
 
     val coinsMarketsList = db.coinsMarketsDao().getCoinsMarketsList()
+    val favoriteCoinsMarketsList = db.coinsMarketsDao().getFavoriteCoinsMarketsList()
 
     init {
         loadData()
@@ -27,6 +28,18 @@ class CoinsMarketsViewModel(application: Application) : AndroidViewModel(applica
 
     fun getCoinInfo(symbol:String): LiveData<CoinsMarkets>{
         return db.coinsMarketsDao().getCoinInfo(symbol)
+    }
+
+    fun insertFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets?){
+        db.coinsMarketsDao().insertFavoriteCoinsMarkets(favoriteCoinsMarkets)
+    }
+
+    fun deleteFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets){
+        db.coinsMarketsDao().deleteFavoriteCoinsMarkets(favoriteCoinsMarkets)
+    }
+
+    fun getFavoriteCoinsMarketsBySymbol(symbol: String):FavoriteCoinsMarkets?{
+        return db.coinsMarketsDao().getFavoriteCoinsMarketsBySymbol(symbol)
     }
 
     private fun loadData(){

@@ -37,4 +37,5 @@
     <string name="max_price_label">Максимальная цена:</string>
     <string name="min_price_label">Минимальная цена:</string>
     <string name="_24_hours">24 часа</string>
+    <string name="add_remove_from_favorite">Добавить/Удалить из избранного</string>
 </resources>
