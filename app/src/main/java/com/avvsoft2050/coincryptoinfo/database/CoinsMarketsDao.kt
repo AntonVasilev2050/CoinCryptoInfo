@@ -15,4 +15,7 @@ interface CoinsMarketsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCoinsMarketsList(marketsList: List<CoinsMarkets>)
+
+    @Query("DELETE FROM coins_markets")
+    fun deleteAllCoinsMarkets()
 }
