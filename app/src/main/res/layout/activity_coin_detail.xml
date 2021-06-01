@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".CoinDetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".CoinDetailActivity">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tvCurrencyLabelD"
@@ -28,21 +28,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:text="45,001.03"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/tvCurrencyLabelD"
-            app:layout_constraintTop_toTopOf="@+id/tvCurrencyLabelD"
-            android:text="45,001.03" />
+            app:layout_constraintTop_toTopOf="@+id/tvCurrencyLabelD" />
 
         <TextView
             android:id="@+id/tvChangePercentageD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:text="-1.08"
             app:layout_constraintBottom_toBottomOf="@+id/tvFirstCurrentPriceD"
             app:layout_constraintStart_toEndOf="@+id/tvFirstCurrentPriceD"
-            app:layout_constraintTop_toTopOf="@+id/tvFirstCurrentPriceD"
-            android:text="-1.08" />
+            app:layout_constraintTop_toTopOf="@+id/tvFirstCurrentPriceD" />
 
         <TextView
             android:id="@+id/tvChangePercentageLabel"
@@ -190,6 +190,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:text="@string/change_price"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonAddToPortfolio" />
@@ -200,6 +201,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/_24_hours"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/tvPriceLabel"
             app:layout_constraintTop_toTopOf="@+id/tvPriceLabel" />
@@ -323,6 +325,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/market_statistic"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -446,5 +449,15 @@
             android:text="bitcoin"
             app:layout_constraintStart_toEndOf="@+id/ivCoinIconD"
             app:layout_constraintTop_toBottomOf="@+id/tvCurrencyLabelD" />
+
+        <ImageView
+            android:id="@+id/ivFavoriteD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/btn_star_big_off" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

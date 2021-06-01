@@ -6,103 +6,103 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "coins_markets")
-data class CoinsMarkets (
+open class CoinsMarkets (
     @SerializedName("id")
     @Expose
-    val id: String?,
+    var id: String?,
 
     @PrimaryKey
     @SerializedName("symbol")
     @Expose
-    val symbol: String,
+    var symbol: String,
 
     @SerializedName("name")
     @Expose
-    val name: String?,
+    var name: String?,
 
     @SerializedName("image")
     @Expose
-    val image: String?,
+    var image: String?,
 
     @SerializedName("current_price")
     @Expose
-    val currentPrice: Double?,
+    var currentPrice: Double?,
 
     @SerializedName("market_cap")
     @Expose
-    val marketCap: Long?,
+    var marketCap: Long?,
 
     @SerializedName("market_cap_rank")
     @Expose
-    val marketCapRank: Int?,
+    var marketCapRank: Int?,
 
     @SerializedName("fully_diluted_valuation")
     @Expose
-    val fullyDilutedValuation: Long?,
+    var fullyDilutedValuation: Long?,
 
     @SerializedName("total_volume")
     @Expose
-    val totalVolume: Long?,
+    var totalVolume: Long?,
 
     @SerializedName("high_24h")
     @Expose
-    val high24h: Double?,
+    var high24h: Double?,
 
     @SerializedName("low_24h")
     @Expose
-    val low24h: Double?,
+    var low24h: Double?,
 
     @SerializedName("price_change_24h")
     @Expose
-    val priceChange24h: Double?,
+    var priceChange24h: Double?,
 
     @SerializedName("price_change_percentage_24h")
     @Expose
-    val priceChangePercentage24h: Double?,
+    var priceChangePercentage24h: Double?,
 
     @SerializedName("market_cap_change_24h")
     @Expose
-    val marketCapChange24h: Double?,
+    var marketCapChange24h: Double?,
 
     @SerializedName("market_cap_change_percentage_24h")
     @Expose
-    val marketCapChangePercentage24h: Double?,
+    var marketCapChangePercentage24h: Double?,
 
     @SerializedName("circulating_supply")
     @Expose
-    val circulatingSupply: Double?,
+    var circulatingSupply: Double?,
 
     @SerializedName("total_supply")
     @Expose
-    val totalSupply: Double?,
+    var totalSupply: Double?,
 
     @SerializedName("max_supply")
     @Expose
-    val maxSupply: Double?,
+    var maxSupply: Double?,
 
     @SerializedName("ath")
     @Expose
-    val ath: Double?,
+    var ath: Double?,
 
     @SerializedName("ath_change_percentage")
     @Expose
-    val athChangePercentage: Double?,
+    var athChangePercentage: Double?,
 
     @SerializedName("ath_date")
     @Expose
-    val athDate: String?,
+    var athDate: String?,
 
     @SerializedName("atl")
     @Expose
-    val atl: Double?,
+    var atl: Double?,
 
     @SerializedName("atl_change_percentage")
     @Expose
-    val atlChangePercentage: Double?,
+    var atlChangePercentage: Double?,
 
     @SerializedName("atl_date")
     @Expose
-    val atlDate: String?,
+    var atlDate: String?,
 
 //    @SerializedName("roi")
 //    @Expose
@@ -110,34 +110,34 @@ data class CoinsMarkets (
 
     @SerializedName("last_updated")
     @Expose
-    val lastUpdated: String?,
+    var lastUpdated: String?,
 
     @SerializedName("price_change_percentage_14d_in_currency")
     @Expose
-    val priceChangePercentage14dInCurrency: Double?,
+    var priceChangePercentage14dInCurrency: Double?,
 
     @SerializedName("price_change_percentage_1h_in_currency")
     @Expose
-    val priceChangePercentage1hInCurrency: Double?,
+    var priceChangePercentage1hInCurrency: Double?,
 
     @SerializedName("price_change_percentage_1y_in_currency")
     @Expose
-    val priceChangePercentage1yInCurrency: Double?,
+    var priceChangePercentage1yInCurrency: Double?,
 
     @SerializedName("price_change_percentage_200d_in_currency")
     @Expose
-    val priceChangePercentage200dInCurrency: Double?,
+    var priceChangePercentage200dInCurrency: Double?,
 
     @SerializedName("price_change_percentage_24h_in_currency")
     @Expose
-    val priceChangePercentage24hInCurrency: Double?,
+    var priceChangePercentage24hInCurrency: Double?,
 
     @SerializedName("price_change_percentage_30d_in_currency")
     @Expose
-    val priceChangePercentage30dInCurrency: Double?,
+    var priceChangePercentage30dInCurrency: Double?,
 
     @SerializedName("price_change_percentage_7d_in_currency")
     @Expose
-    val priceChangePercentage7dInCurrency: Double?,
+    var priceChangePercentage7dInCurrency: Double?
 
 )

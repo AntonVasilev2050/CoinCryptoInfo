@@ -4,12 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.avvsoft2050.coincryptoinfo.ui.main.CoinsMarketsViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_coin_detail.*
+import kotlinx.android.synthetic.main.activity_coin_detail.tvFirstCurrentPriceD
+import kotlinx.android.synthetic.main.item_coins_markets.*
 import kotlin.math.roundToInt
 import kotlin.math.roundToLong
 
@@ -17,6 +20,7 @@ class CoinDetailActivity : AppCompatActivity() {
 
     private lateinit var coinsMarketsViewModel: CoinsMarketsViewModel
     var currencyLabel = "$"
+    var isClicked = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +70,8 @@ class CoinDetailActivity : AppCompatActivity() {
                     tvPercentage7Days.text = change7Days.toString()
                 }
                 tvMarketCap.text = it.marketCap.toString()
-                tvCirculatingSupply.text = it.circulatingSupply?.roundToLong()?.toString() ?: "нет данных"
+                tvCirculatingSupply.text =
+                    it.circulatingSupply?.roundToLong()?.toString() ?: "нет данных"
                 tvTotalSupply.text = it.totalSupply?.roundToLong()?.toString() ?: "нет данных"
                 tvMaxSupply.text = it.maxSupply?.roundToLong()?.toString() ?: "нет данных"
                 tvTotalVolume.text = it.totalVolume?.toString() ?: "нет данных"
