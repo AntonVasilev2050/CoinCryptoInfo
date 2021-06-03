@@ -24,14 +24,14 @@ interface CoinsMarketsDao {
     fun getFavoriteCoinsMarketsList():LiveData<List<FavoriteCoinsMarkets>>
 
     @Query("SELECT * FROM favorite_coins_markets WHERE symbol == :s")
-    fun getFavoriteCoinsMarketsBySymbol(s: String):FavoriteCoinsMarkets?
+    fun getFavoriteCoinsMarketsBySymbol(s: String):LiveData<FavoriteCoinsMarkets>
 
-    @Insert
-    fun insertFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets?)
-
-    @Delete
-    fun deleteFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets)
-
-    @Query("DELETE FROM favorite_coins_markets")
-    fun deleteAllFavoriteCoinsMarkets()
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets)
+//
+//    @Delete
+//    fun deleteFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets)
+//
+//    @Query("DELETE FROM favorite_coins_markets")
+//    fun deleteAllFavoriteCoinsMarkets()
 }

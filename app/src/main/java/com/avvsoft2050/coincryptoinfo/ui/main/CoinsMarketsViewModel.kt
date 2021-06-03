@@ -8,6 +8,7 @@ import com.avvsoft2050.coincryptoinfo.api.ApiFactory
 import com.avvsoft2050.coincryptoinfo.database.AppDatabase
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
 import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoinsMarkets
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
@@ -30,15 +31,22 @@ class CoinsMarketsViewModel(application: Application) : AndroidViewModel(applica
         return db.coinsMarketsDao().getCoinInfo(symbol)
     }
 
-    fun insertFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets?){
-        db.coinsMarketsDao().insertFavoriteCoinsMarkets(favoriteCoinsMarkets)
+    fun insertFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets){
+        val disposable = ApiFactory.apiService.getCoinsMarkets(perPage = 100)
+            .subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                db.coinsMarketsDao().insertFavoriteCoinsMarkets(favoriteCoinsMarkets)
+            }, {
+                Log.d("TEST_OF_LOADING_DATA", "Failure insert to Favorite: ${it.message}")
+            })
     }
 
-    fun deleteFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets){
-        db.coinsMarketsDao().deleteFavoriteCoinsMarkets(favoriteCoinsMarkets)
-    }
-
-    fun getFavoriteCoinsMarketsBySymbol(symbol: String):FavoriteCoinsMarkets?{
+//    fun deleteFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets){
+//        db.coinsMarketsDao().deleteFavoriteCoinsMarkets(favoriteCoinsMarkets)
+//    }
+//
+    fun getFavoriteCoinsMarketsBySymbol(symbol: String):LiveData<FavoriteCoinsMarkets>{
         return db.coinsMarketsDao().getFavoriteCoinsMarketsBySymbol(symbol)
     }
 
@@ -48,7 +56,7 @@ class CoinsMarketsViewModel(application: Application) : AndroidViewModel(applica
             .repeat()
             .retry()
             .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 db.coinsMarketsDao().insertCoinsMarketsList(it)
                 Log.d("TEST_OF_LOADING_DATA", "Success: $it")

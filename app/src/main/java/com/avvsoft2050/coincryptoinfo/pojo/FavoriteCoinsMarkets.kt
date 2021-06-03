@@ -1,6 +1,7 @@
 package com.avvsoft2050.coincryptoinfo.pojo
 
 import androidx.room.Entity
+import androidx.room.Ignore
 
 @Entity(tableName = "favorite_coins_markets")
 class FavoriteCoinsMarkets(
@@ -70,3 +71,40 @@ class FavoriteCoinsMarkets(
     priceChangePercentage30dInCurrency,
     priceChangePercentage7dInCurrency
 )
+{
+    @Ignore
+    public constructor(coinsMarkets:CoinsMarkets) : this
+        (coinsMarkets.id,
+        coinsMarkets.symbol,
+        coinsMarkets.name,
+        coinsMarkets.image,
+        coinsMarkets.currentPrice,
+        coinsMarkets.marketCap,
+        coinsMarkets.marketCapRank,
+        coinsMarkets.fullyDilutedValuation,
+        coinsMarkets.totalVolume,
+        coinsMarkets.high24h,
+        coinsMarkets.low24h,
+        coinsMarkets.priceChange24h,
+        coinsMarkets.priceChangePercentage24h,
+        coinsMarkets.marketCapChange24h,
+        coinsMarkets.marketCapChangePercentage24h,
+        coinsMarkets.circulatingSupply,
+        coinsMarkets.totalSupply,
+        coinsMarkets.maxSupply,
+        coinsMarkets.ath,
+        coinsMarkets.athChangePercentage,
+        coinsMarkets.athDate,
+        coinsMarkets.atl,
+        coinsMarkets.atlChangePercentage,
+        coinsMarkets.atlDate,
+        coinsMarkets.lastUpdated,
+        coinsMarkets.priceChangePercentage14dInCurrency,
+        coinsMarkets.priceChangePercentage1hInCurrency,
+        coinsMarkets.priceChangePercentage1yInCurrency,
+        coinsMarkets.priceChangePercentage200dInCurrency,
+        coinsMarkets.priceChangePercentage24hInCurrency,
+        coinsMarkets.priceChangePercentage30dInCurrency,
+        coinsMarkets.priceChangePercentage7dInCurrency)
+
+}

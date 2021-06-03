@@ -6,8 +6,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.toPublisher
+import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoinsMarkets
 import com.avvsoft2050.coincryptoinfo.ui.main.CoinsMarketsViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_coin_detail.*
@@ -75,13 +78,10 @@ class CoinDetailActivity : AppCompatActivity() {
                 tvMaxSupply.text = it.maxSupply?.roundToLong()?.toString() ?: "нет данных"
                 tvTotalVolume.text = it.totalVolume?.toString() ?: "нет данных"
             })
-            fun onClickSwitchFavorite(view: View) {
-                val favoriteCoinsMarkets = coinsMarketsViewModel.getFavoriteCoinsMarketsBySymbol(symbol)
-                if (favoriteCoinsMarkets == null){
-                    coinsMarketsViewModel.insertFavoriteCoinsMarkets(favoriteCoinsMarkets)
-                }
-            }
+
         }
+
+
     }
 
     companion object {
@@ -93,4 +93,22 @@ class CoinDetailActivity : AppCompatActivity() {
             return intent
         }
     }
+
+
+    fun onClickSwitchFavorite(view: View) {
+        val symbol = intent.getStringExtra(EXTRA_SYMBOL)
+        Log.d("DETAIL_INFO_CLICK", "symbol:" + symbol)
+        symbol?.let {
+            coinsMarketsViewModel.getCoinInfo(it).observe(this, Observer {
+                Log.d("DETAIL_INFO_CLICK", "Click:" + it)
+                coinsMarketsViewModel.insertFavoriteCoinsMarkets(FavoriteCoinsMarkets(it))
+            })
+        }
+
+//
+//        coinsMarketsViewModel.insertFavoriteCoinsMarkets(favoriteCoinsMarkets)
+
+
+    }
+
 }
