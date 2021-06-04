@@ -6,10 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.toPublisher
+import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
 import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoinsMarkets
 import com.avvsoft2050.coincryptoinfo.ui.main.CoinsMarketsViewModel
 import com.squareup.picasso.Picasso
@@ -22,8 +21,8 @@ class CoinDetailActivity : AppCompatActivity() {
 
     private lateinit var coinsMarketsViewModel: CoinsMarketsViewModel
     var currencyLabel = "$"
-    var isClicked = false
-
+    lateinit var coinsMarkets: CoinsMarkets
+    var isFavorite = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +36,9 @@ class CoinDetailActivity : AppCompatActivity() {
         symbol?.let {
             coinsMarketsViewModel.getCoinInfo(it).observe(this, Observer {
                 Log.d("DETAIL_INFO", it.toString())
-                val red = resources.getColor(android.R.color.holo_red_light)
-                val green = resources.getColor(android.R.color.holo_green_light)
+                coinsMarkets = it
+                val red = resources.getColor(android.R.color.holo_red_dark)
+                val green = resources.getColor(android.R.color.holo_green_dark)
                 Picasso.get().load(it.image).into(ivCoinIconD)
                 tvNameD.text = it.name
                 tvFirstCurrentPriceD.text = it.currentPrice.toString()
@@ -78,7 +78,14 @@ class CoinDetailActivity : AppCompatActivity() {
                 tvMaxSupply.text = it.maxSupply?.roundToLong()?.toString() ?: "нет данных"
                 tvTotalVolume.text = it.totalVolume?.toString() ?: "нет данных"
             })
+            coinsMarketsViewModel.getFavoriteCoinsMarketsBySymbol(it).observe(this, Observer {
 
+                if (it != null){
+                    Log.d("DETAIL_INFO_CLICK", "Click0---" + it.symbol)
+                    isFavorite = true
+                    ivFavoriteD.setImageResource(android.R.drawable.btn_star_big_on)
+                }
+            })
         }
 
 
@@ -96,19 +103,17 @@ class CoinDetailActivity : AppCompatActivity() {
 
 
     fun onClickSwitchFavorite(view: View) {
-        val symbol = intent.getStringExtra(EXTRA_SYMBOL)
-        Log.d("DETAIL_INFO_CLICK", "symbol:" + symbol)
-        symbol?.let {
-            coinsMarketsViewModel.getCoinInfo(it).observe(this, Observer {
-                Log.d("DETAIL_INFO_CLICK", "Click:" + it)
-                coinsMarketsViewModel.insertFavoriteCoinsMarkets(FavoriteCoinsMarkets(it))
-            })
-        }
-
-//
-//        coinsMarketsViewModel.insertFavoriteCoinsMarkets(favoriteCoinsMarkets)
-
-
+            if (isFavorite){
+                coinsMarketsViewModel.deleteFavoriteCoinsMarkets(FavoriteCoinsMarkets(coinsMarkets))
+                ivFavoriteD.setImageResource(android.R.drawable.btn_star_big_off)
+                isFavorite = false
+                Log.d("DETAIL_INFO_CLICK", "Click1: " + isFavorite.toString())
+            }else{
+                coinsMarketsViewModel.insertFavoriteCoinsMarkets(FavoriteCoinsMarkets(coinsMarkets))
+                ivFavoriteD.setImageResource(android.R.drawable.btn_star_big_on)
+                isFavorite = true
+                Log.d("DETAIL_INFO_CLICK", "Click2: " + isFavorite.toString())
+            }
     }
 
 }

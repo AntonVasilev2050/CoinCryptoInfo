@@ -23,15 +23,15 @@ interface CoinsMarketsDao {
     @Query("SELECT * FROM favorite_coins_markets ORDER BY marketCapRank")
     fun getFavoriteCoinsMarketsList():LiveData<List<FavoriteCoinsMarkets>>
 
-    @Query("SELECT * FROM favorite_coins_markets WHERE symbol == :s")
+    @Query("SELECT * FROM favorite_coins_markets WHERE symbol == :s LIMIT 1")
     fun getFavoriteCoinsMarketsBySymbol(s: String):LiveData<FavoriteCoinsMarkets>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets)
-//
-//    @Delete
-//    fun deleteFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets)
-//
-//    @Query("DELETE FROM favorite_coins_markets")
-//    fun deleteAllFavoriteCoinsMarkets()
+
+    @Delete
+    fun deleteFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets)
+
+    @Query("DELETE FROM favorite_coins_markets")
+    fun deleteAllFavoriteCoinsMarkets()
 }
