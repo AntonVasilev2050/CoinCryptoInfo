@@ -13,7 +13,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
-class CoinsMarketsViewModel(application: Application) : AndroidViewModel(application) {
+open class CoinsMarketsViewModel(application: Application) : AndroidViewModel(application) {
 
     private val db = AppDatabase.getInstance(application)
     private val compositeDisposable = CompositeDisposable()
@@ -21,7 +21,6 @@ class CoinsMarketsViewModel(application: Application) : AndroidViewModel(applica
     private val secondCurrency = "rub"
 
     val coinsMarketsList = db.coinsMarketsDao().getCoinsMarketsList()
-    val favoriteCoinsMarketsList = db.coinsMarketsDao().getFavoriteCoinsMarketsList()
 
     init {
         loadData()
@@ -45,6 +44,7 @@ class CoinsMarketsViewModel(application: Application) : AndroidViewModel(applica
             }, {
                 Log.d("TEST_OF_LOADING_DATA", "Failure insert to Favorite: ${it.message}")
             })
+        compositeDisposable.add(disposable)
     }
 
     fun deleteFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets){
@@ -57,6 +57,7 @@ class CoinsMarketsViewModel(application: Application) : AndroidViewModel(applica
             }, {
                 Log.d("TEST_OF_LOADING_DATA", "Failure delete from Favorite: ${it.message}")
             })
+        compositeDisposable.add(disposable)
     }
 
     fun deleteAllFavoriteCoinsMarkets(){
@@ -69,6 +70,7 @@ class CoinsMarketsViewModel(application: Application) : AndroidViewModel(applica
             }, {
                 Log.d("TEST_OF_LOADING_DATA", "Failure delete all from Favorite: ${it.message}")
             })
+        compositeDisposable.add(disposable)
     }
 
     private fun loadData(){

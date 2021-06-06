@@ -37,16 +37,16 @@ class CoinsMarketsFragment : Fragment() {
         val root: View = binding.root
         rvCoinsMarketsList = root.findViewById(R.id.rvCoinsMarketsList)
         val adapter = CoinsMarketsAdapter(this.requireActivity())
+        rvCoinsMarketsList.adapter = adapter
+        coinsMarketsViewModel.coinsMarketsList.observe(viewLifecycleOwner, Observer {
+            adapter.coinsMarketsList = it
+        })
         adapter.onCoinClickListener = object : CoinsMarketsAdapter.OnCoinClickListener{
             override fun onCoinClick(coinsMarkets: CoinsMarkets) {
                 val intent = CoinDetailActivity.newIntent(this@CoinsMarketsFragment.activity, coinsMarkets.symbol)
                 startActivity(intent)
             }
         }
-        rvCoinsMarketsList.adapter = adapter
-        coinsMarketsViewModel.coinsMarketsList.observe(viewLifecycleOwner, Observer {
-            adapter.coinsMarketsList = it
-        })
         return root
     }
 

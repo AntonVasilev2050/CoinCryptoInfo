@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelStore
 import androidx.recyclerview.widget.RecyclerView
 import com.avvsoft2050.coincryptoinfo.R
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
+import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoinsMarkets
 import com.avvsoft2050.coincryptoinfo.ui.main.CoinsMarketsViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_coins_markets.view.*
@@ -36,13 +37,13 @@ class CoinsMarketsAdapter(private val context: FragmentActivity): RecyclerView.A
 
     override fun onBindViewHolder(holder: CoinsMarketsViewHolder, position: Int) {
         val coin = coinsMarketsList[position]
-        coinsMarketsViewModel = ViewModelProvider(this.context).get(CoinsMarketsViewModel::class.java)
         val red = context.resources.getColor(android.R.color.holo_red_dark)
         val green = context.resources.getColor(android.R.color.holo_green_dark)
         Picasso.get().load(coin.image).into(holder.ivCoinIcon)
         holder.tvMarketCapRank.text = coin.marketCapRank.toString()
         holder.tvSymbol.text = coin.symbol.uppercase()
         holder.tvName.text = coin.name
+        coinsMarketsViewModel = ViewModelProvider(this.context).get(CoinsMarketsViewModel::class.java)
         coinsMarketsViewModel.getFavoriteCoinsMarketsBySymbol(coin.symbol).observe(this.context, Observer {
             if (it != null){
                 holder.ivFavorite.setImageResource(android.R.drawable.btn_star_big_on)
