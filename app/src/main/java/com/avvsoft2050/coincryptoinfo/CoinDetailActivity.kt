@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -79,9 +80,7 @@ class CoinDetailActivity : AppCompatActivity() {
                 tvTotalVolume.text = it.totalVolume?.toString() ?: "нет данных"
             })
             coinsMarketsViewModel.getFavoriteCoinsMarketsBySymbol(it).observe(this, Observer {
-
                 if (it != null){
-                    Log.d("DETAIL_INFO_CLICK", "Click0---" + it.symbol)
                     isFavorite = true
                     ivFavoriteD.setImageResource(android.R.drawable.btn_star_big_on)
                 }
@@ -107,12 +106,12 @@ class CoinDetailActivity : AppCompatActivity() {
                 coinsMarketsViewModel.deleteFavoriteCoinsMarkets(FavoriteCoinsMarkets(coinsMarkets))
                 ivFavoriteD.setImageResource(android.R.drawable.btn_star_big_off)
                 isFavorite = false
-                Log.d("DETAIL_INFO_CLICK", "Click1: " + isFavorite.toString())
+                Toast.makeText(this, "Удалено из избранного", Toast.LENGTH_SHORT).show()
             }else{
                 coinsMarketsViewModel.insertFavoriteCoinsMarkets(FavoriteCoinsMarkets(coinsMarkets))
                 ivFavoriteD.setImageResource(android.R.drawable.btn_star_big_on)
                 isFavorite = true
-                Log.d("DETAIL_INFO_CLICK", "Click2: " + isFavorite.toString())
+                Toast.makeText(this, "Добавлено в избранное", Toast.LENGTH_SHORT).show()
             }
     }
 

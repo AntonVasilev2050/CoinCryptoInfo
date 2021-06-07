@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +14,7 @@ import com.avvsoft2050.coincryptoinfo.R
 import com.avvsoft2050.coincryptoinfo.adapters.CoinsMarketsAdapter
 import com.avvsoft2050.coincryptoinfo.databinding.FragmentMainBinding
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
+import kotlinx.android.synthetic.main.activity_coin_detail.*
 
 //import kotlinx.android.synthetic.main.fragment_main.*
 
@@ -47,6 +49,12 @@ class CoinsMarketsFragment : Fragment() {
                 startActivity(intent)
             }
         }
+//        adapter.onCoinClickFavoriteListener = object : CoinsMarketsAdapter.OnCoinClickFavoriteListener{
+//            override fun onCoinClickFavoriteListener(ivFavorite: ImageView) {
+//
+//            }
+//        }
+
         return root
     }
 

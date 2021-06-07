@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.recyclerview.widget.RecyclerView
+import com.avvsoft2050.coincryptoinfo.CoinDetailActivity
 import com.avvsoft2050.coincryptoinfo.R
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
 import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoinsMarkets
@@ -29,6 +30,7 @@ class CoinsMarketsAdapter(private val context: FragmentActivity): RecyclerView.A
     }
 
     var onCoinClickListener:OnCoinClickListener? = null
+    var onCoinClickFavoriteListener = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinsMarketsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_coins_markets, parent, false)
@@ -95,6 +97,10 @@ class CoinsMarketsAdapter(private val context: FragmentActivity): RecyclerView.A
         holder.itemView.setOnClickListener {
             onCoinClickListener?.onCoinClick(coin)
         }
+        holder.itemView.ivFavorite.setOnClickListener {
+            onCoinClickFavoriteListener
+        }
+
     }
 
     override fun getItemCount() = coinsMarketsList.size
@@ -119,6 +125,10 @@ class CoinsMarketsAdapter(private val context: FragmentActivity): RecyclerView.A
 
     interface OnCoinClickListener{
         fun onCoinClick(coinsMarkets: CoinsMarkets)
+    }
+
+    interface OnCoinClickFavoriteListener{
+        fun onCoinClickFavoriteListener(ivFavorite: ImageView)
     }
 
 }
