@@ -106,12 +106,12 @@ class CoinDetailActivity : AppCompatActivity() {
                 coinsMarketsViewModel.deleteFavoriteCoinsMarkets(FavoriteCoinsMarkets(coinsMarkets))
                 ivFavoriteD.setImageResource(android.R.drawable.btn_star_big_off)
                 isFavorite = false
-                Toast.makeText(this, "Удалено из избранного", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.remove_from_favorite), Toast.LENGTH_SHORT).show()
             }else{
                 coinsMarketsViewModel.insertFavoriteCoinsMarkets(FavoriteCoinsMarkets(coinsMarkets))
                 ivFavoriteD.setImageResource(android.R.drawable.btn_star_big_on)
                 isFavorite = true
-                Toast.makeText(this, "Добавлено в избранное", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.add_to_favorite), Toast.LENGTH_SHORT).show()
             }
     }
 
