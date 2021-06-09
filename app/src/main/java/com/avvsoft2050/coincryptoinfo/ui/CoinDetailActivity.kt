@@ -42,9 +42,7 @@ class CoinDetailActivity : AppCompatActivity() {
                 val green = resources.getColor(android.R.color.holo_green_dark)
                 Picasso.get().load(it.image).into(ivCoinIconD)
                 tvNameD.text = it.name
-//                tvFirstCurrentPriceD.text = it.currentPrice.toString()
                 tvFirstCurrentPriceD.text = Converter.toUSCurrency(it.currentPrice)
-//                tvMinPrice.text = "$currencyLabel${it.low24h}"
                 tvMinPrice.text = Converter.toUSCurrency(it.low24h)
                 tvMaxPrice.text = Converter.toUSCurrency(it.high24h)
                 it.priceChangePercentage1hInCurrency?.let {
@@ -75,9 +73,9 @@ class CoinDetailActivity : AppCompatActivity() {
                     tvPercentage7Days.text = change7Days.toString()
                 }
                 tvMarketCap.text = Converter.toUSCurrency(it.marketCap?.toDouble())
-                tvCirculatingSupply.text = Converter.toSplitNumber(it?.circulatingSupply) ?: "нет данных"
-                tvTotalSupply.text = Converter.toSplitNumber(it?.totalSupply) ?: "нет данных"
-                tvMaxSupply.text = Converter.toSplitNumber(it?.maxSupply) ?: "нет данных"
+                tvCirculatingSupply.text = Converter.toSplitNumber(it.symbol, it?.circulatingSupply) ?: "нет данных"
+                tvTotalSupply.text = Converter.toSplitNumber(it.symbol, it?.totalSupply) ?: "нет данных"
+                tvMaxSupply.text = Converter.toSplitNumber(it.symbol, it?.maxSupply) ?: "нет данных"
                 tvTotalVolume.text = Converter.toUSCurrency(it.totalVolume?.toDouble())
             })
             coinsMarketsViewModel.getFavoriteCoinsMarketsBySymbol(it).observe(this, Observer {

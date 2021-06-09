@@ -15,9 +15,9 @@ class Converter {
                 return "нет данных"
             }
         }
-        fun toSplitNumber(num: Double?):String{
+        fun toSplitNumber(symbol:String, num: Double?):String{
             if (num != null) {
-                return NumberFormat.getNumberInstance(Locale.US).format(num).toString()
+                return symbol + " " + NumberFormat.getNumberInstance(Locale.US).format(num).toString()
             }else{
                 return "нет данных"
             }
