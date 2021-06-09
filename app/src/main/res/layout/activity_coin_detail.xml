@@ -5,33 +5,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CoinDetailActivity">
+    tools:context=".ui.CoinDetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvCurrencyLabelD"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="$"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/ivCoinIconD"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <TextView-->
+<!--            android:id="@+id/tvCurrencyLabelD"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:textSize="24sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/ivCoinIconD"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <TextView
             android:id="@+id/tvFirstCurrentPriceD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="45,001.03"
+            android:layout_marginStart="8dp"
+            android:text="$45,001.03"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/tvCurrencyLabelD"
+            app:layout_constraintStart_toEndOf="@+id/ivCoinIconD"
             app:layout_constraintTop_toTopOf="@+id/tvCurrencyLabelD" />
 
         <TextView
@@ -244,14 +243,15 @@
             app:layout_constraintStart_toEndOf="@+id/tvMaxPriceLabel"
             app:layout_constraintTop_toTopOf="@+id/tvMaxPriceLabel" />
 
-        <View
-            android:id="@+id/viewLine1"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvMaxPriceLabel" />
+            <View
+                android:id="@+id/viewLine1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/purple_200"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvMaxPriceLabel" />
 
         <TextView
             android:id="@+id/tvPercentage1HourLabel"
@@ -292,14 +292,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvPercentage1HourLabel" />
 
-        <View
-            android:id="@+id/viewLine2"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPercentage7DaysLabel" />
+            <View
+                android:id="@+id/viewLine2"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/purple_200"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPercentage7DaysLabel" />
 
         <TextView
             android:id="@+id/tvPercentage24Hour"
@@ -448,7 +449,7 @@
             android:layout_marginStart="16dp"
             android:text="bitcoin"
             app:layout_constraintStart_toEndOf="@+id/ivCoinIconD"
-            app:layout_constraintTop_toBottomOf="@+id/tvCurrencyLabelD" />
+            app:layout_constraintTop_toBottomOf="@+id/tvFirstCurrentPriceD" />
 
         <ImageView
             android:id="@+id/ivFavoriteD"

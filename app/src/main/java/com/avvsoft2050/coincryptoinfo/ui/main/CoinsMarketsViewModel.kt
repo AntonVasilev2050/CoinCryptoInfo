@@ -82,7 +82,6 @@ open class CoinsMarketsViewModel(application: Application) : AndroidViewModel(ap
 //            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 db.coinsMarketsDao().insertCoinsMarketsList(it)
-                Log.d("TEST_OF_LOADING_DATA", "Success: $it")
             }, {
                 Log.d("TEST_OF_LOADING_DATA", "Failure: ${it.message}")
             })
@@ -93,9 +92,4 @@ open class CoinsMarketsViewModel(application: Application) : AndroidViewModel(ap
         super.onCleared()
         compositeDisposable.dispose()
     }
-
-//    private val _text = MutableLiveData<String>().apply {
-//        value = "This is home Fragment"
-//    }
-//    val text: LiveData<String> = _text
 }

@@ -1,17 +1,18 @@
-package com.avvsoft2050.coincryptoinfo
+package com.avvsoft2050.coincryptoinfo.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.avvsoft2050.coincryptoinfo.R
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
 import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoinsMarkets
 import com.avvsoft2050.coincryptoinfo.ui.main.CoinsMarketsViewModel
+import com.avvsoft2050.coincryptoinfo.utils.Converter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_coin_detail.*
 import kotlinx.android.synthetic.main.activity_coin_detail.tvFirstCurrentPriceD
@@ -36,15 +37,16 @@ class CoinDetailActivity : AppCompatActivity() {
         coinsMarketsViewModel = ViewModelProvider(this).get(CoinsMarketsViewModel::class.java)
         symbol?.let {
             coinsMarketsViewModel.getCoinInfo(it).observe(this, Observer {
-                Log.d("DETAIL_INFO", it.toString())
                 coinsMarkets = it
                 val red = resources.getColor(android.R.color.holo_red_dark)
                 val green = resources.getColor(android.R.color.holo_green_dark)
                 Picasso.get().load(it.image).into(ivCoinIconD)
                 tvNameD.text = it.name
-                tvFirstCurrentPriceD.text = it.currentPrice.toString()
-                tvMinPrice.text = "$currencyLabel${it.low24h}"
-                tvMaxPrice.text = "$currencyLabel${it.high24h}"
+//                tvFirstCurrentPriceD.text = it.currentPrice.toString()
+                tvFirstCurrentPriceD.text = Converter.toUSCurrency(it.currentPrice)
+//                tvMinPrice.text = "$currencyLabel${it.low24h}"
+                tvMinPrice.text = Converter.toUSCurrency(it.low24h)
+                tvMaxPrice.text = Converter.toUSCurrency(it.high24h)
                 it.priceChangePercentage1hInCurrency?.let {
                     val changeHour = (it * 100).roundToInt() / 100.0
                     if (it < 0) {
@@ -72,12 +74,11 @@ class CoinDetailActivity : AppCompatActivity() {
                     }
                     tvPercentage7Days.text = change7Days.toString()
                 }
-                tvMarketCap.text = it.marketCap.toString()
-                tvCirculatingSupply.text =
-                    it.circulatingSupply?.roundToLong()?.toString() ?: "нет данных"
-                tvTotalSupply.text = it.totalSupply?.roundToLong()?.toString() ?: "нет данных"
-                tvMaxSupply.text = it.maxSupply?.roundToLong()?.toString() ?: "нет данных"
-                tvTotalVolume.text = it.totalVolume?.toString() ?: "нет данных"
+                tvMarketCap.text = Converter.toUSCurrency(it.marketCap?.toDouble())
+                tvCirculatingSupply.text = Converter.toSplitNumber(it?.circulatingSupply) ?: "нет данных"
+                tvTotalSupply.text = Converter.toSplitNumber(it?.totalSupply) ?: "нет данных"
+                tvMaxSupply.text = Converter.toSplitNumber(it?.maxSupply) ?: "нет данных"
+                tvTotalVolume.text = Converter.toUSCurrency(it.totalVolume?.toDouble())
             })
             coinsMarketsViewModel.getFavoriteCoinsMarketsBySymbol(it).observe(this, Observer {
                 if (it != null){
@@ -86,8 +87,6 @@ class CoinDetailActivity : AppCompatActivity() {
                 }
             })
         }
-
-
     }
 
     companion object {

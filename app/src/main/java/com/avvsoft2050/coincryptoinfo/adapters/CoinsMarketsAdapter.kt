@@ -8,32 +8,32 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStore
 import androidx.recyclerview.widget.RecyclerView
-import com.avvsoft2050.coincryptoinfo.CoinDetailActivity
 import com.avvsoft2050.coincryptoinfo.R
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
-import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoinsMarkets
 import com.avvsoft2050.coincryptoinfo.ui.main.CoinsMarketsViewModel
+import com.avvsoft2050.coincryptoinfo.utils.Converter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_coins_markets.view.*
 import kotlin.math.roundToInt
 
-class CoinsMarketsAdapter(private val context: FragmentActivity): RecyclerView.Adapter<CoinsMarketsAdapter.CoinsMarketsViewHolder>() {
+class CoinsMarketsAdapter(private val context: FragmentActivity) :
+    RecyclerView.Adapter<CoinsMarketsAdapter.CoinsMarketsViewHolder>() {
 
     private lateinit var coinsMarketsViewModel: CoinsMarketsViewModel
 
     var coinsMarketsList: List<CoinsMarkets> = listOf()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
-    var onCoinClickListener:OnCoinClickListener? = null
-    var onCoinClickFavoriteListener = null
+    var onCoinClickListener: OnCoinClickListener? = null
+    var onCoinClickFavoriteListener: OnCoinClickFavoriteListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinsMarketsViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_coins_markets, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_coins_markets, parent, false)
         return CoinsMarketsViewHolder(view)
     }
 
@@ -45,49 +45,54 @@ class CoinsMarketsAdapter(private val context: FragmentActivity): RecyclerView.A
         holder.tvMarketCapRank.text = coin.marketCapRank.toString()
         holder.tvSymbol.text = coin.symbol.uppercase()
         holder.tvName.text = coin.name
-        coinsMarketsViewModel = ViewModelProvider(this.context).get(CoinsMarketsViewModel::class.java)
-        coinsMarketsViewModel.getFavoriteCoinsMarketsBySymbol(coin.symbol).observe(this.context, Observer {
-            if (it != null){
-                holder.ivFavorite.setImageResource(android.R.drawable.btn_star_big_on)
-            }
-            else{
-                holder.ivFavorite.setImageResource(android.R.drawable.btn_star_big_off)
-            }
-        })
-        holder.tvFirstCurrencyLabel1.text = "$"
-        holder.tvFirstCurrentPrice.text = coin.currentPrice.toString()
+        coinsMarketsViewModel =
+            ViewModelProvider(this.context).get(CoinsMarketsViewModel::class.java)
+        coinsMarketsViewModel.getFavoriteCoinsMarketsBySymbol(coin.symbol)
+            .observe(this.context, Observer {
+                if (it != null) {
+                    holder.ivFavorite.setImageResource(android.R.drawable.btn_star_big_on)
+                } else {
+                    holder.ivFavorite.setImageResource(android.R.drawable.btn_star_big_off)
+                }
+            })
+        holder.tvFirstCurrencyLabel1.text = ""
+//        holder.tvFirstCurrentPrice.text = coin.currentPrice.toString()
+        holder.tvFirstCurrentPrice.text = Converter.toUSCurrency(coin.currentPrice)
         holder.tvLastUpdatedLabel.text = context.getString(R.string.last_updated)
         holder.tvLastUpdated.text = coin.lastUpdated?.dropLast(5)
-        val changeHour = coin.priceChangePercentage1hInCurrency?.let { (it * 100).roundToInt() / 100.0 }
+        val changeHour =
+            coin.priceChangePercentage1hInCurrency?.let { (it * 100).roundToInt() / 100.0 }
         changeHour?.let {
-            if (it < 0){
+            if (it < 0) {
                 holder.tvHour.setTextColor(red)
                 holder.tvHourLabel.setTextColor(red)
-            }else{
+            } else {
                 holder.tvHour.setTextColor(green)
                 holder.tvHourLabel.setTextColor(green)
             }
         }
         holder.tvHour.text = changeHour.toString()
         holder.tvHourLabel.text = "% 1ч"
-        val changeDay = coin.priceChangePercentage24hInCurrency?.let { (it * 100).roundToInt() / 100.0 }
+        val changeDay =
+            coin.priceChangePercentage24hInCurrency?.let { (it * 100).roundToInt() / 100.0 }
         changeDay?.let {
-            if (it < 0){
+            if (it < 0) {
                 holder.tvDay.setTextColor(red)
                 holder.tvDayLabel.setTextColor(red)
-            }else{
+            } else {
                 holder.tvDay.setTextColor(green)
                 holder.tvDayLabel.setTextColor(green)
             }
         }
         holder.tvDay.text = changeDay.toString()
         holder.tvDayLabel.text = "% 1д"
-        val change7Days = coin.priceChangePercentage7dInCurrency?.let { (it * 100).roundToInt() / 100.0 }
+        val change7Days =
+            coin.priceChangePercentage7dInCurrency?.let { (it * 100).roundToInt() / 100.0 }
         change7Days?.let {
-            if (it < 0){
+            if (it < 0) {
                 holder.tv7Days.setTextColor(red)
                 holder.tv7DaysLabel.setTextColor(red)
-            }else{
+            } else {
                 holder.tv7Days.setTextColor(green)
                 holder.tv7DaysLabel.setTextColor(green)
             }
@@ -97,15 +102,16 @@ class CoinsMarketsAdapter(private val context: FragmentActivity): RecyclerView.A
         holder.itemView.setOnClickListener {
             onCoinClickListener?.onCoinClick(coin)
         }
-        holder.itemView.ivFavorite.setOnClickListener {
-            onCoinClickFavoriteListener
-        }
+//        holder.itemView.ivFavorite.setOnClickListener {
+//            onCoinClickFavoriteListener?.onCoinClickFavoriteListener(FavoriteCoinsMarkets(coin))
+//        }
+
 
     }
 
     override fun getItemCount() = coinsMarketsList.size
 
-    inner class CoinsMarketsViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
+    inner class CoinsMarketsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val ivCoinIcon: ImageView = itemView.ivCoinIcon
         val tvMarketCapRank: TextView = itemView.tvMarketCapRank
         val tvSymbol: TextView = itemView.tvSymbol
@@ -123,12 +129,12 @@ class CoinsMarketsAdapter(private val context: FragmentActivity): RecyclerView.A
         val tv7DaysLabel = itemView.tv7DaysLabel
     }
 
-    interface OnCoinClickListener{
+    interface OnCoinClickListener {
         fun onCoinClick(coinsMarkets: CoinsMarkets)
     }
 
-    interface OnCoinClickFavoriteListener{
-        fun onCoinClickFavoriteListener(ivFavorite: ImageView)
+    interface OnCoinClickFavoriteListener {
+        fun onCoinClickFavoriteListener(coinsMarkets: CoinsMarkets)
     }
 
 }
