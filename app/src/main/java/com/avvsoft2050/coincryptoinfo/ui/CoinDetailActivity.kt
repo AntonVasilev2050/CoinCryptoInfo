@@ -43,6 +43,7 @@ class CoinDetailActivity : AppCompatActivity() {
                 Picasso.get().load(it.image).into(ivCoinIconD)
                 tvNameD.text = it.name
                 tvFirstCurrentPriceD.text = Converter.toUSCurrency(it.currentPrice)
+                buttonBuyCoins.text = "Купить ${it.symbol}"
                 tvMinPrice.text = Converter.toUSCurrency(it.low24h)
                 tvMaxPrice.text = Converter.toUSCurrency(it.high24h)
                 it.priceChangePercentage1hInCurrency?.let {
