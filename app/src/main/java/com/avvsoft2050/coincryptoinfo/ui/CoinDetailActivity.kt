@@ -11,13 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.avvsoft2050.coincryptoinfo.R
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
 import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoinsMarkets
-import com.avvsoft2050.coincryptoinfo.ui.main.CoinsMarketsViewModel
+import com.avvsoft2050.coincryptoinfo.ui.coins.CoinsMarketsViewModel
 import com.avvsoft2050.coincryptoinfo.utils.Converter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_coin_detail.*
 import kotlinx.android.synthetic.main.activity_coin_detail.tvFirstCurrentPriceD
 import kotlin.math.roundToInt
-import kotlin.math.roundToLong
 
 class CoinDetailActivity : AppCompatActivity() {
 

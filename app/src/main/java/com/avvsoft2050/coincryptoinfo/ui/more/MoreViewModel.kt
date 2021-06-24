@@ -1,10 +1,10 @@
-package com.avvsoft2050.coincryptoinfo.ui.settings
+package com.avvsoft2050.coincryptoinfo.ui.more
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SettingsViewModel : ViewModel() {
+class MoreViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is notifications Fragment"

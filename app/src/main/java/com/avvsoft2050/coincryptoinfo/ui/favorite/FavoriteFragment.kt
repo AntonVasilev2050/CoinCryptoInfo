@@ -13,6 +13,7 @@ import com.avvsoft2050.coincryptoinfo.R
 import com.avvsoft2050.coincryptoinfo.adapters.CoinsMarketsAdapter
 import com.avvsoft2050.coincryptoinfo.databinding.FragmentFavoriteBinding
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
+import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoinsMarkets
 
 class FavoriteFragment : Fragment() {
 
@@ -40,6 +41,7 @@ class FavoriteFragment : Fragment() {
         favoriteCoinsMarketsViewModel.favoriteCoinsMarketsList.observe(viewLifecycleOwner, Observer {
             adapter.coinsMarketsList = it
         } )
+
         adapter.onCoinClickListener = object : CoinsMarketsAdapter.OnCoinClickListener{
             override fun onCoinClick(coinsMarkets: CoinsMarkets) {
                 val intent = CoinDetailActivity.newIntent(this@FavoriteFragment.activity, coinsMarkets.symbol)

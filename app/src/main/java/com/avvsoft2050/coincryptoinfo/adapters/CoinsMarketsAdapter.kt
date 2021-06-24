@@ -11,7 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.avvsoft2050.coincryptoinfo.R
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
-import com.avvsoft2050.coincryptoinfo.ui.main.CoinsMarketsViewModel
+import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoinsMarkets
+import com.avvsoft2050.coincryptoinfo.ui.coins.CoinsMarketsViewModel
 import com.avvsoft2050.coincryptoinfo.utils.Converter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_coins_markets.view.*
@@ -23,6 +24,12 @@ class CoinsMarketsAdapter(private val context: FragmentActivity) :
     private lateinit var coinsMarketsViewModel: CoinsMarketsViewModel
 
     var coinsMarketsList: List<CoinsMarkets> = listOf()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
+    var favoriteCoinsMarketsList: List<FavoriteCoinsMarkets> = listOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -56,7 +63,6 @@ class CoinsMarketsAdapter(private val context: FragmentActivity) :
                 }
             })
         holder.tvFirstCurrencyLabel1.text = ""
-//        holder.tvFirstCurrentPrice.text = coin.currentPrice.toString()
         holder.tvFirstCurrentPrice.text = Converter.toUSCurrency(coin.currentPrice)
         holder.tvLastUpdatedLabel.text = context.getString(R.string.last_updated)
         holder.tvLastUpdated.text = coin.lastUpdated?.dropLast(5)

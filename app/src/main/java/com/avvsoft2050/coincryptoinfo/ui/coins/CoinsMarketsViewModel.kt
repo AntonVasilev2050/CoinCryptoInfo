@@ -1,4 +1,4 @@
-package com.avvsoft2050.coincryptoinfo.ui.main
+package com.avvsoft2050.coincryptoinfo.ui.coins
 
 import android.app.Application
 import android.util.Log
@@ -8,7 +8,6 @@ import com.avvsoft2050.coincryptoinfo.api.ApiFactory
 import com.avvsoft2050.coincryptoinfo.database.AppDatabase
 import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
 import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoinsMarkets
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit

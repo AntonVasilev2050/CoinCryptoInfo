@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_main">
+    app:startDestination="@+id/navigation_coins">
 
     <fragment
-        android:id="@+id/navigation_main"
-        android:name="com.avvsoft2050.coincryptoinfo.ui.main.CoinsMarketsFragment"
-        android:label="@string/title_main"
-        tools:layout="@layout/fragment_main" />
+        android:id="@+id/navigation_coins"
+        android:name="com.avvsoft2050.coincryptoinfo.ui.coins.CoinsMarketsFragment"
+        android:label="@string/coins"
+        tools:layout="@layout/fragment_coins" />
 
     <fragment
         android:id="@+id/navigation_favorite"
         android:name="com.avvsoft2050.coincryptoinfo.ui.favorite.FavoriteFragment"
-        android:label="@string/title_favorite"
+        android:label="@string/favorite"
         tools:layout="@layout/fragment_favorite" />
 
     <fragment
-        android:id="@+id/navigation_settings"
-        android:name="com.avvsoft2050.coincryptoinfo.ui.settings.SettingsFragment"
-        android:label="@string/title_settings"
-        tools:layout="@layout/fragment_settings" />
+        android:id="@+id/navigation_more"
+        android:name="com.avvsoft2050.coincryptoinfo.ui.more.MoreFragment"
+        android:label="@string/more"
+        tools:layout="@layout/fragment_more" />
 </navigation>

@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_main"
+        android:id="@+id/navigation_coins"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/main" />
+        android:title="@string/coins" />
 
     <item
         android:id="@+id/navigation_favorite"
@@ -12,8 +12,8 @@
         android:title="@string/favorite" />
 
     <item
-        android:id="@+id/navigation_settings"
-        android:icon="@android:drawable/ic_menu_preferences"
-        android:title="@string/settings" />
+        android:id="@+id/navigation_more"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/more" />
 
 </menu>
