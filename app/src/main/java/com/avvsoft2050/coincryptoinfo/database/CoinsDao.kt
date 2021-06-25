@@ -26,6 +26,9 @@ interface CoinsDao {
     @Query("SELECT * FROM favorite_coins WHERE symbol == :s LIMIT 1")
     fun getFavoriteCoinsBySymbol(s: String):LiveData<FavoriteCoins>
 
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    fun insertFavoriteCoinsList(list: List<Coins>)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertFavoriteCoins(favoriteCoins: FavoriteCoins)
 

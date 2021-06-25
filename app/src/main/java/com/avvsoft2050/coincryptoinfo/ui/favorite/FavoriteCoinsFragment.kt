@@ -46,6 +46,7 @@ class FavoriteCoinsFragment : Fragment() {
         })
         coinsViewModel.coinsList.observe(viewLifecycleOwner, Observer {
             coinsListFromDataBase = it.toMutableList()
+// favoriteCoinsList is updated with CoinsList data //
             for (i in 0 until favoriteCoinsListFromDatabase.size) {
                 for (j in 0 until coinsListFromDataBase.size) {
                     if (favoriteCoinsListFromDatabase[i].symbol.equals(coinsListFromDataBase[j].symbol)) {
@@ -54,6 +55,7 @@ class FavoriteCoinsFragment : Fragment() {
                 }
             }
             adapter.coinsList = favoriteCoinsListFromDatabase
+//            favoriteCoinsViewModel.insertFavoriteCoinsList(favoriteCoinsListFromDatabase)
         })
         adapter.onCoinClickListener = object : CoinsAdapter.OnCoinClickListener {
             override fun onCoinClick(coins: Coins) {

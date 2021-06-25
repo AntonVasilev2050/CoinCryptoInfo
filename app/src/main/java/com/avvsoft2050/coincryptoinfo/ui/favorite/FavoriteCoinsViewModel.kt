@@ -5,7 +5,8 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import com.avvsoft2050.coincryptoinfo.api.ApiFactory
 import com.avvsoft2050.coincryptoinfo.database.AppDatabase
-import com.avvsoft2050.coincryptoinfo.ui.coins.CoinsViewModel
+import com.avvsoft2050.coincryptoinfo.pojo.Coins
+import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoins
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
@@ -21,6 +22,10 @@ class FavoriteCoinsViewModel(application: Application) : AndroidViewModel(applic
     init {
         loadData()
     }
+
+//    fun insertFavoriteCoinsList(favoriteCoinsList: List<Coins>) {
+//        db.coinsDao().insertFavoriteCoinsList(favoriteCoinsList)
+//    }
 
     private fun loadData(){
         val disposable = ApiFactory.apiService.getCoins(vsCurrency = firstCurrency, perPage = 100)

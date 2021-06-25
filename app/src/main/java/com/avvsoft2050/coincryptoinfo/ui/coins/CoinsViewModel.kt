@@ -35,9 +35,8 @@ open class CoinsViewModel(application: Application) : AndroidViewModel(applicati
 
     fun insertFavoriteCoins(favoriteCoins: FavoriteCoins){
         val disposable = ApiFactory.apiService.getCoins(perPage = 100)
-            .delaySubscription(10, TimeUnit.MILLISECONDS)
+            .delaySubscription(30, TimeUnit.SECONDS)
             .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 db.coinsDao().insertFavoriteCoins(favoriteCoins)
             }, {
@@ -48,9 +47,8 @@ open class CoinsViewModel(application: Application) : AndroidViewModel(applicati
 
     fun deleteFavoriteCoins(favoriteCoins: FavoriteCoins){
         val disposable = ApiFactory.apiService.getCoins(perPage = 100)
-            .delaySubscription(10, TimeUnit.MILLISECONDS)
+            .delaySubscription(30, TimeUnit.SECONDS)
             .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 db.coinsDao().deleteFavoriteCoins(favoriteCoins)
             }, {
@@ -59,10 +57,9 @@ open class CoinsViewModel(application: Application) : AndroidViewModel(applicati
         compositeDisposable.add(disposable)
     }
 
-
     private fun loadData(){
         val disposable = ApiFactory.apiService.getCoins(vsCurrency = firstCurrency, perPage = 100)
-            .delaySubscription(10, TimeUnit.SECONDS)
+            .delaySubscription(30, TimeUnit.SECONDS)
             .repeat()
             .retry()
             .subscribeOn(Schedulers.io())
