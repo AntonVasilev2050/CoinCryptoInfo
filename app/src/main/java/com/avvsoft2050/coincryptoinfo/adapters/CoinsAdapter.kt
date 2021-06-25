@@ -10,26 +10,26 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.avvsoft2050.coincryptoinfo.R
-import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
-import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoinsMarkets
-import com.avvsoft2050.coincryptoinfo.ui.coins.CoinsMarketsViewModel
+import com.avvsoft2050.coincryptoinfo.pojo.Coins
+import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoins
+import com.avvsoft2050.coincryptoinfo.ui.coins.CoinsViewModel
 import com.avvsoft2050.coincryptoinfo.utils.Converter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_coins_markets.view.*
 import kotlin.math.roundToInt
 
-class CoinsMarketsAdapter(private val context: FragmentActivity) :
-    RecyclerView.Adapter<CoinsMarketsAdapter.CoinsMarketsViewHolder>() {
+class CoinsAdapter(private val context: FragmentActivity) :
+    RecyclerView.Adapter<CoinsAdapter.CoinsMarketsViewHolder>() {
 
-    private lateinit var coinsMarketsViewModel: CoinsMarketsViewModel
+    private lateinit var coinsViewModel: CoinsViewModel
 
-    var coinsMarketsList: List<CoinsMarkets> = listOf()
+    var coinsList: List<Coins> = listOf()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
-    var favoriteCoinsMarketsList: List<FavoriteCoinsMarkets> = listOf()
+    var favoriteCoinsMarketsList: List<FavoriteCoins> = listOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -45,16 +45,16 @@ class CoinsMarketsAdapter(private val context: FragmentActivity) :
     }
 
     override fun onBindViewHolder(holder: CoinsMarketsViewHolder, position: Int) {
-        val coin = coinsMarketsList[position]
+        val coin = coinsList[position]
         val red = context.resources.getColor(android.R.color.holo_red_dark)
         val green = context.resources.getColor(android.R.color.holo_green_dark)
         Picasso.get().load(coin.image).into(holder.ivCoinIcon)
         holder.tvMarketCapRank.text = coin.marketCapRank.toString()
         holder.tvSymbol.text = coin.symbol.uppercase()
         holder.tvName.text = coin.name
-        coinsMarketsViewModel =
-            ViewModelProvider(this.context).get(CoinsMarketsViewModel::class.java)
-        coinsMarketsViewModel.getFavoriteCoinsMarketsBySymbol(coin.symbol)
+        coinsViewModel =
+            ViewModelProvider(this.context).get(CoinsViewModel::class.java)
+        coinsViewModel.getFavoriteCoinsMarketsBySymbol(coin.symbol)
             .observe(this.context, Observer {
                 if (it != null) {
                     holder.ivFavorite.setImageResource(android.R.drawable.btn_star_big_on)
@@ -115,7 +115,7 @@ class CoinsMarketsAdapter(private val context: FragmentActivity) :
 
     }
 
-    override fun getItemCount() = coinsMarketsList.size
+    override fun getItemCount() = coinsList.size
 
     inner class CoinsMarketsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val ivCoinIcon: ImageView = itemView.ivCoinIcon
@@ -136,11 +136,11 @@ class CoinsMarketsAdapter(private val context: FragmentActivity) :
     }
 
     interface OnCoinClickListener {
-        fun onCoinClick(coinsMarkets: CoinsMarkets)
+        fun onCoinClick(coins: Coins)
     }
 
     interface OnCoinClickFavoriteListener {
-        fun onCoinClickFavoriteListener(coinsMarkets: CoinsMarkets)
+        fun onCoinClickFavoriteListener(coins: Coins)
     }
 
 }

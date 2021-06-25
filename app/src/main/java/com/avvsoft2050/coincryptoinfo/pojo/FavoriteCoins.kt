@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.Ignore
 
 @Entity(tableName = "favorite_coins_markets")
-class FavoriteCoinsMarkets(
+class FavoriteCoins(
     id: String?,
     symbol: String,
     name: String?,
@@ -37,7 +37,7 @@ class FavoriteCoinsMarkets(
     priceChangePercentage24hInCurrency: Double?,
     priceChangePercentage30dInCurrency: Double?,
     priceChangePercentage7dInCurrency: Double?
-) : CoinsMarkets(
+) : Coins(
     id,
     symbol,
     name,
@@ -73,38 +73,38 @@ class FavoriteCoinsMarkets(
 )
 {
     @Ignore
-    public constructor(coinsMarkets:CoinsMarkets) : this
-        (coinsMarkets.id,
-        coinsMarkets.symbol,
-        coinsMarkets.name,
-        coinsMarkets.image,
-        coinsMarkets.currentPrice,
-        coinsMarkets.marketCap,
-        coinsMarkets.marketCapRank,
-        coinsMarkets.fullyDilutedValuation,
-        coinsMarkets.totalVolume,
-        coinsMarkets.high24h,
-        coinsMarkets.low24h,
-        coinsMarkets.priceChange24h,
-        coinsMarkets.priceChangePercentage24h,
-        coinsMarkets.marketCapChange24h,
-        coinsMarkets.marketCapChangePercentage24h,
-        coinsMarkets.circulatingSupply,
-        coinsMarkets.totalSupply,
-        coinsMarkets.maxSupply,
-        coinsMarkets.ath,
-        coinsMarkets.athChangePercentage,
-        coinsMarkets.athDate,
-        coinsMarkets.atl,
-        coinsMarkets.atlChangePercentage,
-        coinsMarkets.atlDate,
-        coinsMarkets.lastUpdated,
-        coinsMarkets.priceChangePercentage14dInCurrency,
-        coinsMarkets.priceChangePercentage1hInCurrency,
-        coinsMarkets.priceChangePercentage1yInCurrency,
-        coinsMarkets.priceChangePercentage200dInCurrency,
-        coinsMarkets.priceChangePercentage24hInCurrency,
-        coinsMarkets.priceChangePercentage30dInCurrency,
-        coinsMarkets.priceChangePercentage7dInCurrency)
+    public constructor(coins:Coins) : this
+        (coins.id,
+        coins.symbol,
+        coins.name,
+        coins.image,
+        coins.currentPrice,
+        coins.marketCap,
+        coins.marketCapRank,
+        coins.fullyDilutedValuation,
+        coins.totalVolume,
+        coins.high24h,
+        coins.low24h,
+        coins.priceChange24h,
+        coins.priceChangePercentage24h,
+        coins.marketCapChange24h,
+        coins.marketCapChangePercentage24h,
+        coins.circulatingSupply,
+        coins.totalSupply,
+        coins.maxSupply,
+        coins.ath,
+        coins.athChangePercentage,
+        coins.athDate,
+        coins.atl,
+        coins.atlChangePercentage,
+        coins.atlDate,
+        coins.lastUpdated,
+        coins.priceChangePercentage14dInCurrency,
+        coins.priceChangePercentage1hInCurrency,
+        coins.priceChangePercentage1yInCurrency,
+        coins.priceChangePercentage200dInCurrency,
+        coins.priceChangePercentage24hInCurrency,
+        coins.priceChangePercentage30dInCurrency,
+        coins.priceChangePercentage7dInCurrency)
 
 }

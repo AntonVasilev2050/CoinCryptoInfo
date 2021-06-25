@@ -2,17 +2,16 @@ package com.avvsoft2050.coincryptoinfo.ui.coins
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.*
 import com.avvsoft2050.coincryptoinfo.api.ApiFactory
 import com.avvsoft2050.coincryptoinfo.database.AppDatabase
-import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
-import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoinsMarkets
+import com.avvsoft2050.coincryptoinfo.pojo.Coins
+import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoins
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
-open class CoinsMarketsViewModel(application: Application) : AndroidViewModel(application) {
+open class CoinsViewModel(application: Application) : AndroidViewModel(application) {
 
     private val db = AppDatabase.getInstance(application)
     private val compositeDisposable = CompositeDisposable()
@@ -25,17 +24,17 @@ open class CoinsMarketsViewModel(application: Application) : AndroidViewModel(ap
         loadData()
     }
 
-    fun getCoinInfo(symbol:String): LiveData<CoinsMarkets>{
+    fun getCoinInfo(symbol:String): LiveData<Coins>{
         return db.coinsMarketsDao().getCoinInfo(symbol)
     }
 
-    fun getFavoriteCoinsMarketsBySymbol(s: String):LiveData<FavoriteCoinsMarkets>{
+    fun getFavoriteCoinsMarketsBySymbol(s: String):LiveData<FavoriteCoins>{
         return db.coinsMarketsDao().getFavoriteCoinsMarketsBySymbol(s)
     }
 
-    fun insertFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets){
-        val disposable = ApiFactory.apiService.getCoinsMarkets(perPage = 100)
-            .delaySubscription(100, TimeUnit.MILLISECONDS)
+    fun insertFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoins){
+        val disposable = ApiFactory.apiService.getCoins(perPage = 100)
+            .delaySubscription(10, TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.io())
 //            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -46,9 +45,9 @@ open class CoinsMarketsViewModel(application: Application) : AndroidViewModel(ap
         compositeDisposable.add(disposable)
     }
 
-    fun deleteFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoinsMarkets){
-        val disposable = ApiFactory.apiService.getCoinsMarkets(perPage = 100)
-            .delaySubscription(100, TimeUnit.MILLISECONDS)
+    fun deleteFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoins){
+        val disposable = ApiFactory.apiService.getCoins(perPage = 100)
+            .delaySubscription(10, TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.io())
 //            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -60,8 +59,8 @@ open class CoinsMarketsViewModel(application: Application) : AndroidViewModel(ap
     }
 
     fun deleteAllFavoriteCoinsMarkets(){
-        val disposable = ApiFactory.apiService.getCoinsMarkets(perPage = 100)
-            .delaySubscription(100, TimeUnit.MILLISECONDS)
+        val disposable = ApiFactory.apiService.getCoins(perPage = 100)
+            .delaySubscription(10, TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.io())
 //            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -73,7 +72,7 @@ open class CoinsMarketsViewModel(application: Application) : AndroidViewModel(ap
     }
 
     private fun loadData(){
-        val disposable = ApiFactory.apiService.getCoinsMarkets(vsCurrency = firstCurrency, perPage = 100)
+        val disposable = ApiFactory.apiService.getCoins(vsCurrency = firstCurrency, perPage = 100)
             .delaySubscription(10, TimeUnit.SECONDS)
             .repeat()
             .retry()

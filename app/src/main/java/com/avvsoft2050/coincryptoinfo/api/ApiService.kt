@@ -1,20 +1,20 @@
 package com.avvsoft2050.coincryptoinfo.api
 
-import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
+import com.avvsoft2050.coincryptoinfo.pojo.Coins
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
     @GET("coins/markets")
-    fun getCoinsMarkets(
+    fun getCoins(
         @Query(QUERY_PARAM_VS_CURRENCY) vsCurrency: String = "usd",
         @Query(QUERY_PARAM_ORDER) order: String = "market_cap_desc",
         @Query(QUERY_PARAM_PER_PAGE) perPage: Int = 100,
         @Query(QUERY_PARAM_PAGE) page: Int = 1,
         @Query(QUERY_PARAM_SPARKLINE) sparkline: Boolean = false,
         @Query(QUERY_PARAM_PRICE_CHANGE_PERCENTAGE) priceChangePercentage: String = "1h,24h,7d,14d,30d,200d,1y"
-    ): Single<List<CoinsMarkets>>
+    ): Single<List<Coins>>
 
     companion object {
         private const val QUERY_PARAM_VS_CURRENCY = "vs_currency"

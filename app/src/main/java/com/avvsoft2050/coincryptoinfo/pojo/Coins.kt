@@ -6,7 +6,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "coins_markets")
-open class CoinsMarkets (
+open class Coins (
     @SerializedName("id")
     @Expose
     var id: String?,

@@ -9,9 +9,9 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.avvsoft2050.coincryptoinfo.R
-import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
-import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoinsMarkets
-import com.avvsoft2050.coincryptoinfo.ui.coins.CoinsMarketsViewModel
+import com.avvsoft2050.coincryptoinfo.pojo.Coins
+import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoins
+import com.avvsoft2050.coincryptoinfo.ui.coins.CoinsViewModel
 import com.avvsoft2050.coincryptoinfo.utils.Converter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_coin_detail.*
@@ -20,9 +20,9 @@ import kotlin.math.roundToInt
 
 class CoinDetailActivity : AppCompatActivity() {
 
-    private lateinit var coinsMarketsViewModel: CoinsMarketsViewModel
+    private lateinit var coinsViewModel: CoinsViewModel
     var currencyLabel = "$"
-    lateinit var coinsMarkets: CoinsMarkets
+    lateinit var coins: Coins
     var isFavorite = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,10 +33,10 @@ class CoinDetailActivity : AppCompatActivity() {
             return
         }
         val symbol = intent.getStringExtra(EXTRA_SYMBOL)
-        coinsMarketsViewModel = ViewModelProvider(this).get(CoinsMarketsViewModel::class.java)
+        coinsViewModel = ViewModelProvider(this).get(CoinsViewModel::class.java)
         symbol?.let {
-            coinsMarketsViewModel.getCoinInfo(it).observe(this, Observer {
-                coinsMarkets = it
+            coinsViewModel.getCoinInfo(it).observe(this, Observer {
+                coins = it
                 val red = resources.getColor(android.R.color.holo_red_dark)
                 val green = resources.getColor(android.R.color.holo_green_dark)
                 Picasso.get().load(it.image).into(ivCoinIconD)
@@ -78,7 +78,7 @@ class CoinDetailActivity : AppCompatActivity() {
                 tvMaxSupply.text = Converter.toSplitNumber(it.symbol, it?.maxSupply) ?: "нет данных"
                 tvTotalVolume.text = Converter.toUSCurrency(it.totalVolume?.toDouble())
             })
-            coinsMarketsViewModel.getFavoriteCoinsMarketsBySymbol(it).observe(this, Observer {
+            coinsViewModel.getFavoriteCoinsMarketsBySymbol(it).observe(this, Observer {
                 if (it != null){
                     isFavorite = true
                     ivFavoriteD.setImageResource(android.R.drawable.btn_star_big_on)
@@ -100,12 +100,12 @@ class CoinDetailActivity : AppCompatActivity() {
 
     fun onClickSwitchFavorite(view: View) {
             if (isFavorite){
-                coinsMarketsViewModel.deleteFavoriteCoinsMarkets(FavoriteCoinsMarkets(coinsMarkets))
+                coinsViewModel.deleteFavoriteCoinsMarkets(FavoriteCoins(coins))
                 ivFavoriteD.setImageResource(android.R.drawable.btn_star_big_off)
                 isFavorite = false
                 Toast.makeText(this, getString(R.string.remove_from_favorite), Toast.LENGTH_SHORT).show()
             }else{
-                coinsMarketsViewModel.insertFavoriteCoinsMarkets(FavoriteCoinsMarkets(coinsMarkets))
+                coinsViewModel.insertFavoriteCoinsMarkets(FavoriteCoins(coins))
                 ivFavoriteD.setImageResource(android.R.drawable.btn_star_big_on)
                 isFavorite = true
                 Toast.makeText(this, getString(R.string.add_to_favorite), Toast.LENGTH_SHORT).show()

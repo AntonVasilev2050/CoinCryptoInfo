@@ -10,18 +10,18 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.avvsoft2050.coincryptoinfo.ui.CoinDetailActivity
 import com.avvsoft2050.coincryptoinfo.R
-import com.avvsoft2050.coincryptoinfo.adapters.CoinsMarketsAdapter
+import com.avvsoft2050.coincryptoinfo.adapters.CoinsAdapter
 import com.avvsoft2050.coincryptoinfo.databinding.FragmentCoinsBinding
-import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
-import com.avvsoft2050.coincryptoinfo.ui.favorite.FavoriteCoinsMarketsViewModel
+import com.avvsoft2050.coincryptoinfo.pojo.Coins
+import com.avvsoft2050.coincryptoinfo.ui.favorite.FavoriteCoinsViewModel
 import kotlinx.android.synthetic.main.activity_coin_detail.*
 
 //import kotlinx.android.synthetic.main.fragment_coins.*
 
-class CoinsMarketsFragment : Fragment() {
+class CoinsFragment : Fragment() {
 
-    private lateinit var coinsMarketsViewModel: CoinsMarketsViewModel
-    private lateinit var favoriteCoinsMarketsViewModel: FavoriteCoinsMarketsViewModel
+    private lateinit var coinsViewModel: CoinsViewModel
+    private lateinit var favoriteCoinsMarketsViewModel: FavoriteCoinsViewModel
     private var _binding: FragmentCoinsBinding? = null
 
     // This property is only valid between onCreateView and
@@ -34,20 +34,20 @@ class CoinsMarketsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        coinsMarketsViewModel =
-            ViewModelProvider(this).get(CoinsMarketsViewModel::class.java)
-        favoriteCoinsMarketsViewModel = ViewModelProvider(this).get(FavoriteCoinsMarketsViewModel::class.java)
+        coinsViewModel =
+            ViewModelProvider(this).get(CoinsViewModel::class.java)
+        favoriteCoinsMarketsViewModel = ViewModelProvider(this).get(FavoriteCoinsViewModel::class.java)
         _binding = FragmentCoinsBinding.inflate(inflater, container, false)
         val root: View = binding.root
         rvCoinsMarketsList = root.findViewById(R.id.rvCoinsMarketsList)
-        val adapter = CoinsMarketsAdapter(this.requireActivity())
+        val adapter = CoinsAdapter(this.requireActivity())
         rvCoinsMarketsList.adapter = adapter
-        coinsMarketsViewModel.coinsMarketsList.observe(viewLifecycleOwner, Observer {
-            adapter.coinsMarketsList = it
+        coinsViewModel.coinsMarketsList.observe(viewLifecycleOwner, Observer {
+            adapter.coinsList = it
         })
-        adapter.onCoinClickListener = object : CoinsMarketsAdapter.OnCoinClickListener{
-            override fun onCoinClick(coinsMarkets: CoinsMarkets) {
-                val intent = CoinDetailActivity.newIntent(this@CoinsMarketsFragment.activity, coinsMarkets.symbol)
+        adapter.onCoinClickListener = object : CoinsAdapter.OnCoinClickListener{
+            override fun onCoinClick(coins: Coins) {
+                val intent = CoinDetailActivity.newIntent(this@CoinsFragment.activity, coins.symbol)
                 startActivity(intent)
             }
         }
