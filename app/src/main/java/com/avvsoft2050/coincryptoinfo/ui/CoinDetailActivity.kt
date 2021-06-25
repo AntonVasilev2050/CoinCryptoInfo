@@ -100,12 +100,12 @@ class CoinDetailActivity : AppCompatActivity() {
 
     fun onClickSwitchFavorite(view: View) {
             if (isFavorite){
-                coinsViewModel.deleteFavoriteCoinsMarkets(FavoriteCoins(coins))
+                coinsViewModel.deleteFavoriteCoins(FavoriteCoins(coins))
                 ivFavoriteD.setImageResource(android.R.drawable.btn_star_big_off)
                 isFavorite = false
                 Toast.makeText(this, getString(R.string.remove_from_favorite), Toast.LENGTH_SHORT).show()
             }else{
-                coinsViewModel.insertFavoriteCoinsMarkets(FavoriteCoins(coins))
+                coinsViewModel.insertFavoriteCoins(FavoriteCoins(coins))
                 ivFavoriteD.setImageResource(android.R.drawable.btn_star_big_on)
                 isFavorite = true
                 Toast.makeText(this, getString(R.string.add_to_favorite), Toast.LENGTH_SHORT).show()

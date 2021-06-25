@@ -21,7 +21,7 @@ interface CoinsDao {
     fun deleteAllCoins()
 
     @Query("SELECT * FROM favorite_coins ORDER BY marketCapRank")
-    fun getFavoriteCoinsList():LiveData<List<FavoriteCoins>>
+    fun getFavoriteCoinsList():LiveData<MutableList<FavoriteCoins>>
 
     @Query("SELECT * FROM favorite_coins WHERE symbol == :s LIMIT 1")
     fun getFavoriteCoinsBySymbol(s: String):LiveData<FavoriteCoins>

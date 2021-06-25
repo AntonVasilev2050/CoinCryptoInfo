@@ -29,5 +29,5 @@ abstract class AppDatabase : RoomDatabase() {
         }
     }
 
-    abstract fun coinsMarketsDao(): CoinsDao
+    abstract fun coinsDao(): CoinsDao
 }

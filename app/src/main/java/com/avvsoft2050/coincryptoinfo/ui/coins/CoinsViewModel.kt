@@ -18,58 +18,47 @@ open class CoinsViewModel(application: Application) : AndroidViewModel(applicati
     private val firstCurrency = "usd"
     private val secondCurrency = "rub"
 
-    val coinsMarketsList = db.coinsMarketsDao().getCoinsList()
+    val coinsList = db.coinsDao().getCoinsList()
 
     init {
         loadData()
     }
 
     fun getCoinInfo(symbol:String): LiveData<Coins>{
-        return db.coinsMarketsDao().getCoinInfo(symbol)
+        return db.coinsDao().getCoinInfo(symbol)
     }
 
     fun getFavoriteCoinsMarketsBySymbol(s: String):LiveData<FavoriteCoins>{
-        return db.coinsMarketsDao().getFavoriteCoinsBySymbol(s)
+        return db.coinsDao().getFavoriteCoinsBySymbol(s)
     }
 
-    fun insertFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoins){
+
+    fun insertFavoriteCoins(favoriteCoins: FavoriteCoins){
         val disposable = ApiFactory.apiService.getCoins(perPage = 100)
             .delaySubscription(10, TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.io())
 //            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                db.coinsMarketsDao().insertFavoriteCoins(favoriteCoinsMarkets)
+                db.coinsDao().insertFavoriteCoins(favoriteCoins)
             }, {
                 Log.d("TEST_OF_LOADING_DATA", "Failure insert to Favorite: ${it.message}")
             })
         compositeDisposable.add(disposable)
     }
 
-    fun deleteFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoins){
+    fun deleteFavoriteCoins(favoriteCoins: FavoriteCoins){
         val disposable = ApiFactory.apiService.getCoins(perPage = 100)
             .delaySubscription(10, TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.io())
 //            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                db.coinsMarketsDao().deleteFavoriteCoins(favoriteCoinsMarkets)
+                db.coinsDao().deleteFavoriteCoins(favoriteCoins)
             }, {
                 Log.d("TEST_OF_LOADING_DATA", "Failure delete from Favorite: ${it.message}")
             })
         compositeDisposable.add(disposable)
     }
 
-    fun deleteAllFavoriteCoinsMarkets(){
-        val disposable = ApiFactory.apiService.getCoins(perPage = 100)
-            .delaySubscription(10, TimeUnit.MILLISECONDS)
-            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                db.coinsMarketsDao().deleteAllFavoriteCoins()
-            }, {
-                Log.d("TEST_OF_LOADING_DATA", "Failure delete all from Favorite: ${it.message}")
-            })
-        compositeDisposable.add(disposable)
-    }
 
     private fun loadData(){
         val disposable = ApiFactory.apiService.getCoins(vsCurrency = firstCurrency, perPage = 100)
@@ -79,7 +68,7 @@ open class CoinsViewModel(application: Application) : AndroidViewModel(applicati
             .subscribeOn(Schedulers.io())
 //            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                db.coinsMarketsDao().insertCoinsList(it)
+                db.coinsDao().insertCoinsList(it)
             }, {
                 Log.d("TEST_OF_LOADING_DATA", "Failure: ${it.message}")
             })
