@@ -18,7 +18,7 @@ open class CoinsViewModel(application: Application) : AndroidViewModel(applicati
     private val firstCurrency = "usd"
     private val secondCurrency = "rub"
 
-    val coinsMarketsList = db.coinsMarketsDao().getCoinsMarketsList()
+    val coinsMarketsList = db.coinsMarketsDao().getCoinsList()
 
     init {
         loadData()
@@ -29,7 +29,7 @@ open class CoinsViewModel(application: Application) : AndroidViewModel(applicati
     }
 
     fun getFavoriteCoinsMarketsBySymbol(s: String):LiveData<FavoriteCoins>{
-        return db.coinsMarketsDao().getFavoriteCoinsMarketsBySymbol(s)
+        return db.coinsMarketsDao().getFavoriteCoinsBySymbol(s)
     }
 
     fun insertFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoins){
@@ -38,7 +38,7 @@ open class CoinsViewModel(application: Application) : AndroidViewModel(applicati
             .subscribeOn(Schedulers.io())
 //            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                db.coinsMarketsDao().insertFavoriteCoinsMarkets(favoriteCoinsMarkets)
+                db.coinsMarketsDao().insertFavoriteCoins(favoriteCoinsMarkets)
             }, {
                 Log.d("TEST_OF_LOADING_DATA", "Failure insert to Favorite: ${it.message}")
             })
@@ -51,7 +51,7 @@ open class CoinsViewModel(application: Application) : AndroidViewModel(applicati
             .subscribeOn(Schedulers.io())
 //            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                db.coinsMarketsDao().deleteFavoriteCoinsMarkets(favoriteCoinsMarkets)
+                db.coinsMarketsDao().deleteFavoriteCoins(favoriteCoinsMarkets)
             }, {
                 Log.d("TEST_OF_LOADING_DATA", "Failure delete from Favorite: ${it.message}")
             })
@@ -64,7 +64,7 @@ open class CoinsViewModel(application: Application) : AndroidViewModel(applicati
             .subscribeOn(Schedulers.io())
 //            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                db.coinsMarketsDao().deleteAllFavoriteCoinsMarkets()
+                db.coinsMarketsDao().deleteAllFavoriteCoins()
             }, {
                 Log.d("TEST_OF_LOADING_DATA", "Failure delete all from Favorite: ${it.message}")
             })
@@ -79,7 +79,7 @@ open class CoinsViewModel(application: Application) : AndroidViewModel(applicati
             .subscribeOn(Schedulers.io())
 //            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                db.coinsMarketsDao().insertCoinsMarketsList(it)
+                db.coinsMarketsDao().insertCoinsList(it)
             }, {
                 Log.d("TEST_OF_LOADING_DATA", "Failure: ${it.message}")
             })

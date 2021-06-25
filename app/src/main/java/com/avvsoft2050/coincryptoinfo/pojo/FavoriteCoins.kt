@@ -3,7 +3,7 @@ package com.avvsoft2050.coincryptoinfo.pojo
 import androidx.room.Entity
 import androidx.room.Ignore
 
-@Entity(tableName = "favorite_coins_markets")
+@Entity(tableName = "favorite_coins")
 class FavoriteCoins(
     id: String?,
     symbol: String,

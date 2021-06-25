@@ -8,30 +8,30 @@ import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoins
 
 @Dao
 interface CoinsDao {
-    @Query("SELECT * FROM coins_markets ORDER BY marketCapRank")
-    fun getCoinsMarketsList():LiveData<List<Coins>>
+    @Query("SELECT * FROM coins ORDER BY marketCapRank")
+    fun getCoinsList():LiveData<List<Coins>>
 
-    @Query("SELECT * FROM coins_markets WHERE symbol = :s LIMIT 1 ")
+    @Query("SELECT * FROM coins WHERE symbol = :s LIMIT 1 ")
     fun getCoinInfo(s:String):LiveData<Coins>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCoinsMarketsList(list: List<Coins>)
+    fun insertCoinsList(list: List<Coins>)
 
-    @Query("DELETE FROM coins_markets")
-    fun deleteAllCoinsMarkets()
+    @Query("DELETE FROM coins")
+    fun deleteAllCoins()
 
-    @Query("SELECT * FROM favorite_coins_markets ORDER BY marketCapRank")
-    fun getFavoriteCoinsMarketsList():LiveData<List<FavoriteCoins>>
+    @Query("SELECT * FROM favorite_coins ORDER BY marketCapRank")
+    fun getFavoriteCoinsList():LiveData<List<FavoriteCoins>>
 
-    @Query("SELECT * FROM favorite_coins_markets WHERE symbol == :s LIMIT 1")
-    fun getFavoriteCoinsMarketsBySymbol(s: String):LiveData<FavoriteCoins>
+    @Query("SELECT * FROM favorite_coins WHERE symbol == :s LIMIT 1")
+    fun getFavoriteCoinsBySymbol(s: String):LiveData<FavoriteCoins>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoins)
+    fun insertFavoriteCoins(favoriteCoins: FavoriteCoins)
 
     @Delete
-    fun deleteFavoriteCoinsMarkets(favoriteCoinsMarkets: FavoriteCoins)
+    fun deleteFavoriteCoins(favoriteCoins: FavoriteCoins)
 
-    @Query("DELETE FROM favorite_coins_markets")
-    fun deleteAllFavoriteCoinsMarkets()
+    @Query("DELETE FROM favorite_coins")
+    fun deleteAllFavoriteCoins()
 }
