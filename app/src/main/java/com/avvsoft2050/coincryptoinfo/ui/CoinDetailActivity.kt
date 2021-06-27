@@ -1,11 +1,14 @@
 package com.avvsoft2050.coincryptoinfo.ui
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -20,6 +23,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_coin_detail.*
 import kotlinx.android.synthetic.main.activity_coin_detail.tvFirstCurrentPriceD
 import kotlinx.android.synthetic.main.item_coins_markets.*
+import java.security.AccessController.getContext
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -44,8 +48,9 @@ class CoinDetailActivity : AppCompatActivity() {
         symbol?.let {
             coinsViewModel.getCoinInfo(it).observe(this, Observer {
                 coins = it
-                val red = resources.getColor(android.R.color.holo_red_dark)
-                val green = resources.getColor(android.R.color.holo_green_dark)
+//                val green = resources.getColor(android.R.color.holo_green_dark)
+                val red = ContextCompat.getColor(this, android.R.color.holo_red_dark)
+                val green = ContextCompat.getColor(this, android.R.color.holo_green_dark)
                 Picasso.get().load(it.image).into(ivCoinIconD)
                 tvNameD.text = it.name
                 tvFirstCurrentPriceD.text = Converter.toUSCurrency(it.currentPrice)
