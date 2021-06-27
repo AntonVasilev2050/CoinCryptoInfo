@@ -4,9 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.avvsoft2050.coincryptoinfo.pojo.CoinsMarkets
+import com.avvsoft2050.coincryptoinfo.pojo.Coins
+import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoins
 
-@Database(entities = [CoinsMarkets::class], version = 1, exportSchema = false)
+@Database(entities = [Coins::class, FavoriteCoins::class], version = 3, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     companion object {
         private var db: AppDatabase? = null
@@ -21,11 +22,12 @@ abstract class AppDatabase : RoomDatabase() {
                         context,
                         AppDatabase::class.java,
                         DB_NAME
-                    ).build()
+                    ).fallbackToDestructiveMigration().build()
                 db = instance
                 return instance
             }
         }
     }
-    abstract fun coinsMarketsDao(): CoinsMarketsDao
+
+    abstract fun coinsDao(): CoinsDao
 }
