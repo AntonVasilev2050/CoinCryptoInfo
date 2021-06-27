@@ -49,7 +49,7 @@ class CoinDetailActivity : AppCompatActivity() {
                 Picasso.get().load(it.image).into(ivCoinIconD)
                 tvNameD.text = it.name
                 tvFirstCurrentPriceD.text = Converter.toUSCurrency(it.currentPrice)
-                buttonBuyCoins.text = "Купить ${it.symbol}"
+                buttonBuyCoins.text = String.format("Купить %s", it.symbol)
                 tvMinPrice.text = Converter.toUSCurrency(it.low24h)
                 tvMaxPrice.text = Converter.toUSCurrency(it.high24h)
                 it.priceChangePercentage1hInCurrency?.let {
@@ -80,12 +80,12 @@ class CoinDetailActivity : AppCompatActivity() {
                     tvPercentage7Days.text = change7Days.toString()
                 }
                 tvMarketCap.text = Converter.toUSCurrency(it.marketCap?.toDouble())
-                tvCirculatingSupply.text = Converter.toSplitNumber(it.symbol, it?.circulatingSupply) ?: "нет данных"
-                tvTotalSupply.text = Converter.toSplitNumber(it.symbol, it?.totalSupply) ?: "нет данных"
-                tvMaxSupply.text = Converter.toSplitNumber(it.symbol, it?.maxSupply) ?: "нет данных"
+                tvCirculatingSupply.text = Converter.toSplitNumber(it.symbol, it?.circulatingSupply)
+                tvTotalSupply.text = Converter.toSplitNumber(it.symbol, it?.totalSupply)
+                tvMaxSupply.text = Converter.toSplitNumber(it.symbol, it?.maxSupply)
                 tvTotalVolume.text = Converter.toUSCurrency(it.totalVolume?.toDouble())
             })
-            coinsViewModel.getFavoriteCoinsMarketsBySymbol(it).observe(this, Observer {
+            coinsViewModel.getFavoriteCoinsMarketsBySymbol(it).observe(this, {
                 if (it != null){
                     isFavorite = true
                     ivFavoriteD.setImageResource(android.R.drawable.btn_star_big_on)
