@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.avvsoft2050.coincryptoinfo.R
 import com.avvsoft2050.coincryptoinfo.pojo.Coins
 import com.avvsoft2050.coincryptoinfo.pojo.FavoriteCoins
@@ -28,6 +30,7 @@ class CoinDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coin_detail)
+//        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
         if (!intent.hasExtra(EXTRA_SYMBOL)) {
             finish()
             return
