@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -18,6 +19,8 @@ import com.avvsoft2050.coincryptoinfo.utils.Converter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_coin_detail.*
 import kotlinx.android.synthetic.main.activity_coin_detail.tvFirstCurrentPriceD
+import kotlinx.android.synthetic.main.item_coins_markets.*
+import java.util.*
 import kotlin.math.roundToInt
 
 class CoinDetailActivity : AppCompatActivity() {
@@ -30,12 +33,13 @@ class CoinDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coin_detail)
-//        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
         if (!intent.hasExtra(EXTRA_SYMBOL)) {
             finish()
             return
         }
         val symbol = intent.getStringExtra(EXTRA_SYMBOL)
+//        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setTitle(symbol?.uppercase())
         coinsViewModel = ViewModelProvider(this).get(CoinsViewModel::class.java)
         symbol?.let {
             coinsViewModel.getCoinInfo(it).observe(this, Observer {
