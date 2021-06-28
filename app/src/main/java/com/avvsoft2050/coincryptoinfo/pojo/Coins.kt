@@ -7,11 +7,12 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "coins")
 open class Coins (
+    @PrimaryKey
     @SerializedName("id")
     @Expose
-    var id: String?,
+    var id: String,
 
-    @PrimaryKey
+
     @SerializedName("symbol")
     @Expose
     var symbol: String,

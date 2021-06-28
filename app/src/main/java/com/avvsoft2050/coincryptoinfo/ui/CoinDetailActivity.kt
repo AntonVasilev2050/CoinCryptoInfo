@@ -43,7 +43,7 @@ class CoinDetailActivity : AppCompatActivity() {
         }
         val symbol = intent.getStringExtra(EXTRA_SYMBOL)
 //        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle(symbol?.uppercase())
+        supportActionBar?.title = symbol?.uppercase()
         coinsViewModel = ViewModelProvider(this).get(CoinsViewModel::class.java)
         symbol?.let {
             coinsViewModel.getCoinInfo(it).observe(this, Observer {

@@ -5,7 +5,7 @@ import androidx.room.Ignore
 
 @Entity(tableName = "favorite_coins")
 class FavoriteCoins(
-    id: String?,
+    id: String,
     symbol: String,
     name: String?,
     image: String?,

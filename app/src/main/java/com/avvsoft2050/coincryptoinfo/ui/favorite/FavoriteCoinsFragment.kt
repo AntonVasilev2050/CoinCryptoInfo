@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -42,7 +43,6 @@ class FavoriteCoinsFragment : Fragment() {
         rvFavoriteCoinsMarketsList.adapter = adapter
         favoriteCoinsViewModel.favoriteCoinsList.observe(viewLifecycleOwner, Observer {
             favoriteCoinsListFromDatabase = it.toMutableList()
-
         })
         coinsViewModel.coinsList.observe(viewLifecycleOwner, Observer {
             coinsListFromDataBase = it.toMutableList()
@@ -55,7 +55,6 @@ class FavoriteCoinsFragment : Fragment() {
                 }
             }
             adapter.coinsList = favoriteCoinsListFromDatabase
-//            favoriteCoinsViewModel.insertFavoriteCoinsList(favoriteCoinsListFromDatabase)
         })
         adapter.onCoinClickListener = object : CoinsAdapter.OnCoinClickListener {
             override fun onCoinClick(coins: Coins) {
